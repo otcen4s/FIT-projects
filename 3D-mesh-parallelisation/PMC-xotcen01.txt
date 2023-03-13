@@ -1,0 +1,130 @@
+Architektury Výpočetních Systémů (AVS 2021)
+Projekt č. 2 (PMC)
+Login: xotcen01
+
+Úloha 1: Paralelizace původního řešení
+===============================================================================
+
+1) Kterou ze smyček (viz zadání) je vhodnější paralelizovat a co způsobuje 
+   neefektivitu paralelizaci té druhé?
+
+   - Je lepšie paralelizovať cyklus, ktorý sa nachádza v metóde marchCubes()
+   - Neefektivita pralelizácie druhej smyčky, ktorá sa nachádza v metóde 
+     evaluateFieldAt() je spôsobená tým, že metóda evaluateFieldAt() je volaná
+     z metódy marchCubes(), a teda je to zanorenejšia smyčka a je preto vhodnejšie
+     zastit efektivitu paralelizácie vonkajšej smyčky a nie tej zanorenej
+
+2) Jaké plánování (rozdělení práce mezi vlákna) jste zvolili a proč? 
+   Jaký vliv má velikost "chunk" při dynamickém plánování (8, 16, 32, 64)?
+
+   - Zvolil som dynamické plánovanie na základe empirického preskúmania 
+     viacerých variant ako napríklad guided, static. Keďže iterácie cyklu sú časovo
+     rôzne na určitej úrovni, tak vďaka direktíve dynamic je možné zaistiť
+     určitú rovnosť vo výpočetnej náročnosti. Napriek tomu ale časové rozdiely
+     medzi jednotlivými plánovaniami neboli veľmi odlišné. Veľkosť chunk môže ovplyvniť
+     réžiu synchronizácie, avšak v tomto prípade sa pri rôznych veľkostiach celková 
+     rýchlosť príliš nezmenila.
+
+
+3) Jakým způsobem zajišťujete ukládání trojúhelníků z několika vláken současně?
+   - Kritickou sekciou pomocou použitia #pragma omp critical(emitTriangle)
+
+
+Úloha 2: Paralelní průchod stromem
+===============================================================================
+
+1) Stručně popište použití OpenMP tasků ve vašem řešení.
+
+   - Na začiatku je v metóde marchCubes() zavolaná metóda octree(), ktorá rekurzívne
+     vždy rozdelí priestor na 8 podpriestorov(potomkov). Metóda marchCubes() je nad volaním metódy
+     octree() vytvorená direktíva  #pragma omp parallel, vďaka čomu je možné vytvoriť 
+     paralelizáciu taskov.
+   - Taktiež je použitá direktíva #pragma omp single, ktorá umožní na najvyššej úrovni
+     vytvoriť iba jedno vlákno.
+   - V metóde octree() sú taktiež použité direktívy #pragma omp task default(explicitné zadefinovanie
+     tasku), #pragma omp atomic update(zaistí pre špecifické úložiko aby bolo automaticky prístupné, konkrétne
+     pomocou update pre sčítavanie) a #pragma omp taskwait (hovorí, aby sa počkalo na dokončenie
+     child taskov v aktuálnom tasku)
+
+2) Jakým způsobem jste realizovali sesbírání celkového počtu trojúhelníků?
+   - Je to realizované pomocou sekvenčnej impelmentácie metódy octree(), 
+     v ktorej môžu nastať tri prípady, a to:
+      1. octree() vráti hodnotu 0 ak je daný blok prázdny (podmienka F(p))
+      2. octree() vráti hdonotu metódy buildCube() ak je dosiahnutá konkrétna
+      hĺbka (cut-off)
+      3. octree() bude rekurzívne ukladať počet trojuholníkov do premennej
+      totalCubes, pomocou direktívy #pragma omp atomic update a nakoniec sa
+      pomocou direktívy #pragma omp taskwait čaká na dokončenie všetkých child taskov
+      na dokončenie a vráti konečný počet trojuholníkov 
+
+3) Jaký vliv má na vaše řešení tzv. "cut-off"? Je vhodné vytvářet nový 
+   task pro každou krychli na nejnižší úrovni?
+
+   -  Hodnota cut-off je nastavená na hodnotu 1, z dôvodu že ak
+      je táto hodnota väčšia ako 1 tak nie je získaný správny počet
+      trojuholníkov (výsledný 3D objekt je neúplný) alebo v prípade,
+      že je hodnota nastavená na menšiu hodnotu ako 1 tak sa neiktoré
+      trojuholníky počítaju viackrát, čo zbytočne komplikuje a predlžuje
+      výpočet
+   - Na najnižšej úrovni sa generujú samotné trojuholníky, a pre túto úlohu
+     nemá význam tvoriť nový task
+
+4) Jakým způsobem zajišťujete ukládání trojúhelníků z několika vláken současně?
+   -  Kritickou sekciou pomocou použitia #pragma omp critical(emitTriangle)
+
+Úloha 3: Grafy škálování všech řešení
+===============================================================================
+
+1) Stručně zhodnoťte efektivitu vytvořených řešení (na základě grafů škálování).
+   - Z grafu grid scalng je možné vypozorovať že efektivita sa mení na základe veľkosti
+     mriežky. V prípade že je veľkosť mriežky príliš malá, tak implementácia 
+     pomocou loop algortimu je o niečo efektívnejšia ako tree, avšak od určitej 
+     veľkosti sa tento jav začne meniť a keď má mriežka vhodnú veľkosť, tak
+     je octree efektívnejší. Od hodnoty 2^20 pre veľkosť mirežky sa efektivita 
+     oboch algoritmov zrovná na podobnú úroveň a časovo rastú oba algoritmy lineárne
+     s veľkosťou mriežky.
+   - Graf slabého škálovania hovorí, že pre obe riešenia (tree, loop) je záťaž 
+     výpočtu závislá na vstupnej veľkosti a že záťaz sa pre určitý vhodný počet vlákien
+     znižuje no pre malú vstupnú veľkosť a väčší počet vlákien sa časová náročnosť začne opäť
+     zvyšovať
+   - Graf silného škálovania pri tree implementácií hovorí, že pri malých vstupných veľkostiach
+     a nízkom počte vlákien časová náročnosť jemne narastá no pre vhodné väčšie vtupné veľkosti 
+     a narastajúci počet vlkákien sa časová náročnosť viditeľne zlepšuje no pre zbytočne veľké množstvo
+     vlákien táto náročnosť začína znovu narastať. V prípade implementácie loop sa pre všetky vstupné 
+     veľkosti výpočetná náročnosť so zvyšujúcim sa počtom vlákine zlepšuje no rovnako ako pri
+     tree implementácií sa pre príliš veľké množstvo vlákien začne výpočetná náročnosť znovu zhoršovať
+
+
+2) V jakém případě (v závislosti na počtu bodů ve vstupním souboru a velikosti 
+   mřížky) bude vaše řešení 1. úlohy neefektivní? (pokud takový případ existuje)
+   - Riešenie prvej úlohy začne byť výrazne neefektívne pre menšie veľkosti mriežky a väčšie počty
+     vlákien
+
+3) Je (nebo není) stromový algoritmus efektivnější z pohledu slabého škálování 
+   vzhledem ke vstupu?
+   - Vzhľadom ku vstupu nie je stromový algoritmus efektívnejší oproti loop algoritmu
+
+Úloha 4: Analýza využití jader pomocí VTune
+================================================================================
+
+1) Jaké bylo průměrné využití jader pro všechny tři implementace s omezením na 
+   18 vláken? Na kolik procent byly využity?
+   
+   ref: 2.8%
+   loop: 47.8%
+   tree: 45.3%
+
+2) Jaké bylo průměrné využití jader pro všechny tři implementace s využitím 
+   všech jader? Na kolik procent se podařilo využít obě CPU?
+   
+   ref: 2.8%
+   loop: 85.6%
+   tree: 83.4%
+
+3) Jaké jsou závěry z těchto měření?
+   - Ide o dramatické zlepšenie využitia jadier oproti referenčnému riešeniu v prípade oboch algoritmov
+   - Pre obmedzenie pri polovičnom počte jadier je ich využitie pre oba algoritmy veľmi podobné
+   - V prípade použitia všetkých jadier efektivita ich využitia ešte rapídne stúpla čo značí
+     že algoritmy je optimálnejšie spúšťať s využitím vačšieho počtu jadier ak je to možné
+     
+

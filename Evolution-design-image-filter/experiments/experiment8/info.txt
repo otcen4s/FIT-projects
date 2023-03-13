@@ -1,0 +1,7 @@
+Image: chessboard256_50
+Resolution: 256x256
+Mutation value: 0.5
+Mutation increase: 0.1
+Population size: 100
+Generations: 15
+CGP rowsXcols: 8x9

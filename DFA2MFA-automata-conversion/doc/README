@@ -1,0 +1,11 @@
+Projekt FLP DKA-2-MKA:
+
+- v projekte sa podarilo naimplementovať voľbu prepínača -i, ktorá overí syntaktickú správnosť vstupu a vypíše tento spracovaný vstup
+na štandardný výstup podľa vnútornej reprezentácie
+- čo nie je dokončené, je prepínač -t, ktorý nedokončí prevod DKA na MKA
+- problémom zostalo vytvorenie prechodovej funkcie po minimalizácií, a tym pádom aj prevod na kanonický tvar
+- samotný algoritmus minimalizácie, vrátane vytvorenia totálnej prechodovej funkcie pomocou SINK stavu a odstránenie nedosiahnuteľných stavov,
+v programe zahrnutý je
+- rovnako minimalizácia pomocou k-nerozlišiteľnosti implementovaná je a vytvorí konečnú množinu relácií ekvivalencie
+- výpis MKA na výstupe je teda takmer kompletný, no prechodová funkcia v ňom je zahrnutá z posledného kroku, čiže odstránenie nedosiahnuteľných stavov 
+- na parsovanie vstupu nebola použitá knižnica Parsec, ale základné funkcie Prelude

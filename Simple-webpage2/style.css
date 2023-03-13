@@ -1,0 +1,904 @@
+*{
+    font-family: Montserrat, serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a {
+    outline: none;
+}
+
+
+html {
+
+    overflow: auto;
+    background-size: 100% 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+.content {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#section-home .banner-content .img{
+    cursor: pointer;
+    width: 20px;
+    height: auto;
+}
+
+#navbar .mobile-menu{
+    display: none;
+}
+
+#section-home #navbar{
+    z-index: 10;
+    width: 100%;
+    background-color: #f9f9f9;
+    height: 50px;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+#section-home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+    height: 70vh;
+}
+#section-home .img-fluid{
+    text-align: center;
+    padding-top: 100px;
+}
+
+#section-home .img-logo{
+    width: 220px;
+    height: auto;
+    border-radius: 180px;
+}
+
+#section-home .img-logo:hover{
+    transition: transform 4s;
+    transform: rotate3d(1, 1, 1, 720deg);
+    transition-delay: 0.5s;
+    animation-name: explore;
+    animation-delay: 0.5s;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes explore {
+    0% {background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);}
+    20% {background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);}
+    40% {background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);}
+    60% {background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);}
+    80% {background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);}
+    100% {background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);}
+
+}
+
+#section-home .menu{
+    text-align: center;
+}
+
+
+#section-home .menu li{
+    padding: 20px 50px;
+}
+
+#section-home li    {
+    display: inline-block;
+}
+
+#section-home li a{
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: black;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.glow-on-hover {
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: black;
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #f9f9f9;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+.dropdown{
+    position: relative;
+    display: flex;
+    cursor: pointer;
+}
+
+#section-home #navbar .dropdown ul{
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 60px;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+    text-align: center;
+    width: 200px
+}
+#section-home #navbar .dropdown:hover > ul{
+    display: block;
+}
+
+#section-home #navbar .dropdown li{
+    width: 100%;
+    text-align: center;
+}
+#section-home #navbar .dropdown li a{
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 0;
+}
+#section-home #navbar .dropdown li a:hover{
+    color: #005dd0;
+    font-weight: 500;
+}
+
+#section-about{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+#section-education{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+    width: 100%;
+    height: 90vh;
+}
+
+#section-education h2{
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+#section-education .images-education{
+    width: 100%;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+#section-education .hidden-text{
+    display: flex;
+    padding-top: 50px;
+}
+
+#show-cambridge{
+    padding: 10px;
+    display: none;
+    width: 75%;
+    margin: 0 auto;
+}
+
+#show-harvard{
+    padding: 10px;
+    display: none;
+    width: 75%;
+    margin: 0 auto;
+}
+
+#show-stanford{
+    padding: 10px;
+    display: none;
+    width: 75%;
+    margin: 0 auto;
+}
+
+#section-education .images-education p{
+    display: flex;
+    justify-content: center;
+}
+
+#section-education .images-education .img{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    transition: width 1s, height 1s;
+}
+
+#section-education .images-education .img:hover{
+    width: 150px;
+    height: 150px;
+}
+
+#section-education p{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    color: rgba(0,0,0,0.7);
+}
+
+#section-education .hidden-text p{
+    width: 100%;
+    text-align: center;
+    line-height: 1.5em;
+    font-family: Crimson, sans-serif;
+}
+
+#section-education .hidden-text .welcome-sentence{
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    font-weight: 500;
+    font-size: 25px;
+    letter-spacing: 0.1em;
+    margin: 0 auto;
+    font-family: Montserrat, serif;
+
+}
+
+#section-education span{
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
+#section-education span:hover{
+    color: #ee0427;
+}
+
+#section-projects{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+#section-projects h2{
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding-bottom: 60px;
+}
+
+#section-projects img{
+    cursor: pointer;
+    width: 30px;
+    height: auto;
+}
+
+#section-projects img:hover{
+    opacity: 0.5;
+}
+
+#section-projects .projects-img{
+    position: relative;
+    bottom: 30px;
+    left: 20px ;
+}
+
+#section-projects .projects-text{
+    padding-left: 60px;
+    font-family: "DejaVu Sans", sans-serif;
+    font-size: 20px;
+    font-style: italic;
+}
+
+#section-personal-data{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
+}
+
+#section-personal-data h2{
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e9defa;
+}
+
+#section-personal-data .data {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 75%;
+    margin: 0 auto;
+}
+
+#section-personal-data .collapsible{
+    background-color: #e9defa;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-weight: 500;
+    font-size: 16px;
+}
+#section-personal-data .collapsible:hover{
+    background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+    background-blend-mode: screen;
+}
+
+#section-personal-data .content-text{
+    border-radius: 15px;
+    padding: 10px 18px;
+    display: none;
+    background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+    background-blend-mode: screen;}
+
+#section-personal-data .content-text p{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5em;
+    letter-spacing: 0.1em;
+}
+
+#section-hobbies{
+    padding-top: 100px;
+}
+
+#section-hobbies h2{
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 20px;
+}
+
+#section-hobbies .images #img-uniq{
+    width: 100%;
+    height: 700px;
+    padding: 0;
+}
+
+
+#section-hobbies .btn .btn-forward{
+    user-select: none;
+    position: relative;
+    font-size: 18px;
+    float: right;
+    background-color:  #212529;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-weight: bold;
+    right: 20px;
+    bottom: 350px;
+    opacity: 0.3;
+}
+
+#section-hobbies p{
+    display: flex;
+}
+
+#section-hobbies .btn .btn-backward{
+    user-select: none;
+    position: relative;
+    float: left;
+    background-color: #212529;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-weight: bold;
+    left: 20px;
+    opacity: 0.3;
+    bottom: 350px;
+}
+
+#section-hobbies .btn .btn-backward:hover, #section-hobbies .btn .btn-forward:hover{
+    opacity: unset;
+}
+
+
+#section-experiences{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-image: linear-gradient(to top, #c71d6f 0%, #d09693 100%);
+}
+
+#section-experiences h2{
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+#section-experiences .checkmark{
+    color: #434343;
+    font-size: 25px;
+    position: relative;
+    top: 40px;
+}
+
+#section-experiences .experiences-text{
+    font-weight: bold;
+    color: azure;
+    letter-spacing: 0.1em;
+    padding-left: 40px;
+    padding-top: 20px;
+}
+
+.social{
+    text-align: center;
+    padding: 20px;
+}
+
+.social h4{
+    letter-spacing: 0.1em;
+    font-size: 20px;
+}
+
+.social img{
+    padding: 10px;
+    width: 40px;
+    margin: 5px 2px;
+}
+
+.social img:hover {
+    opacity: 0.7;
+}
+
+.social li{
+    display: inline-block;
+}
+
+footer{
+    font-size: 12px;
+    text-align: center;
+    padding: 20px;
+}
+
+
+@media screen and (max-width: 650px){
+    html{
+        margin: 0 auto;
+        min-width: 500px;
+        overflow: hidden;
+    }
+
+    #main{
+        position: fixed;
+        overflow-y: scroll;
+        top: 0; left: 0; right: 0; bottom: 0;
+    }
+
+    #section-home .img-logo{
+        width: 150px;
+        height: auto;
+        border-radius: 180px;
+    }
+
+    h3{
+        font-size: 14px;
+    }
+
+    .social h4{
+        letter-spacing: 0.1em;
+        font-size: 13px;
+    }
+
+    #section-education h2, #section-hobbies h2, #section-experiences h2, #section-personal-data h2, #section-projects h2{
+        font-size: 20px;
+    }
+
+    #navbar .menu{
+        display: none;
+    }
+    #navbar .mobile-menu{
+        display: flex;
+        justify-content: flex-start;
+    }
+    #navbar .mobile-menu p{
+        position: relative;
+        top:5px;
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+    #navbar .mobile-menu a{
+        color: #993ebc;
+        font-size: 35px;
+    }
+    #navbar .mobile-menu .menu-icon{
+        position: relative;
+        bottom: 8px;
+    }
+    #section-home #navbar{
+        height: 35px;
+    }
+
+    #section-home .mobile-menu li{
+        padding: 15px;
+    }
+
+    #section-home .mobile-menu #hidden-menu a{
+        display: block;
+        width: 100%;
+    }
+
+    #section-home .mobile-menu #hidden-menu li{
+        padding: 20px 20px 20px 25px;
+    }
+    #section-home .mobile-menu #hidden-menu{
+        z-index: 1;
+        position: relative;
+        right: 60px;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+    }
+    #section-home .mobile-menu li a{
+        letter-spacing: 0.1em;
+        font-weight: 600;
+        color: black;
+        font-size: 13px;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+    .dropdown-mobile{
+        position: relative;
+        display: flex;
+        cursor: pointer;
+    }
+
+    #section-home #navbar .dropdown-mobile ul{
+        display: none;
+        flex-direction: column;
+        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    #section-home #navbar .dropdown-mobile li{
+        width: 100%;
+        text-align: center;
+    }
+    #section-home #navbar .dropdown-mobile li a{
+        font-size: 13px;
+        color: black;
+        text-decoration: none;
+    }
+
+    #section-education .images-education .img{
+        width: 70px;
+        height: 70px;
+    }
+
+    #section-education .images-education .img:hover{
+        width: 80px;
+        height: 80px;
+    }
+
+
+    #section-education .hidden-text p{
+        font-size: 13px;
+    }
+
+    #section-education .hidden-text .welcome-sentence{
+       font-size: 16px;
+    }
+
+    #section-hobbies .images{
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+    #section-hobbies .images #img-uniq{
+        height: 300px;
+    }
+    #section-hobbies .btn .btn-forward{
+        right: 20px;
+        bottom: 180px;
+        padding: 10px 20px;
+    }
+
+    #section-hobbies .btn .btn-backward{
+        left: 20px;
+        bottom: 180px;
+        padding: 10px 20px;
+    }
+    #show-cambridge{
+        width: 100%;
+    }
+
+    #show-harvard{
+        width: 100%;
+    }
+
+    #show-stanford{
+        width: 100%;
+    }
+    #section-personal-data .content-text p{
+        font-size: 13px;
+    }
+    #section-experiences .checkmark{
+        font-size: 18px;
+    }
+
+    #section-experiences .experiences-text{
+        font-size: 14px;
+    }
+    #section-projects img{
+        width: 20px;
+        height: auto;
+    }
+
+    #section-projects .projects-img{
+        bottom: 20px;
+    }
+
+    #section-projects .projects-text{
+        padding-left: 60px;
+        font-size: 14px;
+    }
+
+}
+@media screen and (max-width: 460px) {
+    #section-projects .projects-img .book, .mobile {
+        position: relative;
+        bottom: 10px;
+    }
+}
+@media screen and (max-width: 390px){
+    #section-projects .projects-img .lifestyle, .olympic {
+        position: relative;
+        bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    #show-cambridge{
+        width: 100%;
+    }
+
+    #show-harvard{
+        width: 100%;
+    }
+
+    #show-stanford{
+        width: 100%;
+    }
+
+    #section-education .hidden-text .welcome-sentence {
+        padding-bottom: 20px;
+        font-size: 13px;
+    }
+
+    #section-education {
+        height: 500px;
+    }
+
+    #section-education .hidden-text {
+        padding-top: 10px;
+    }
+
+    #section-education .hidden-text p {
+        font-size: 10px;
+    }
+
+    #navbar .mobile-menu p {
+        font-size: 10px;
+    }
+
+    #navbar .mobile-menu a {
+        font-size: 20px;
+    }
+
+    #navbar .mobile-menu .menu-icon {
+        position: relative;
+        bottom: 3px;
+        left: 2px;
+    }
+
+    #section-home .mobile-menu #hidden-menu{
+       right: 35px;
+    }
+
+    #section-home #navbar {
+        height: 20px;
+    }
+    #section-home .mobile-menu #hidden-menu a{
+        font-size: 10px;
+    }
+    #section-home #navbar .dropdown-mobile li a{
+        font-size: 10px;
+    }
+    #section-home .mobile-menu #hidden-menu li{
+        padding: 15px 15px 15px 20px;
+    }
+    #section-hobbies .images #img-uniq{
+        height: 200px;
+    }
+    #section-hobbies .btn .btn-forward{
+        bottom: 130px;
+        padding: 5px 10px;
+    }
+
+    #section-hobbies .btn .btn-backward{
+        bottom: 130px;
+        padding: 5px 10px;
+    }
+    #section-experiences .checkmark{
+        top: 50px;
+    }
+    #section-projects .projects-img{
+        bottom: 20px;
+    }
+    #section-projects .projects-img .bio{
+        position: relative;
+    }
+}
+
+@media screen and (max-height: 350px){
+    #section-home .img-fluid{
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    #section-home .img-logo{
+        width: 100px;
+        height: auto;
+        border-radius: 180px;
+    }
+    #show-cambridge{
+        width: 100%;
+    }
+
+    #show-harvard{
+        width: 100%;
+    }
+
+    #show-stanford{
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-height: 670px){
+    #section-education .hidden-text .welcome-sentence{
+        padding-bottom: 20px;
+        font-size: 13px;
+    }
+    #section-education{
+        height: 500px;
+    }
+    #section-education .hidden-text{
+        padding-top: 10px;
+    }
+    #section-education .hidden-text p{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 270px){
+    html{
+        overflow: auto;
+    }
+    #main{
+        position: unset;
+        overflow-y: unset;
+    }
+    #section-home .mobile-menu #hidden-menu a{
+        font-size: 7px;
+    }
+    #section-home #navbar .dropdown-mobile li a{
+        font-size: 7px;
+    }
+
+    #section-home .mobile-menu #hidden-menu li{
+        padding: 10px 10px 10px 50px;
+    }
+    #show-cambridge{
+        width: 100%;
+    }
+
+    #show-harvard{
+        width: 100%;
+    }
+
+    #show-stanford{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1150px) {
+    #section-hobbies .btn .btn-forward{
+        bottom: 450px;
+        padding: 25px 30px;
+    }
+
+    #section-hobbies .btn .btn-backward{
+        bottom: 450px;
+        padding: 25px 30px;
+    }
+    #section-hobbies .images #img-uniq{
+        height: 1000px;
+    }
+    #section-education{
+        height: 60vh;
+    }
+}

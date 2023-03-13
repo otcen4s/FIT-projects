@@ -1,0 +1,19 @@
+Meno: Matej Otčenáš
+Login: xotcen01
+
+Krátky popis:
+
+Program ipk-sniffer slúži na odchytávanie packetov pre protokoly TCP/UDP, ktoré následne vypíše na štandardný výstup.
+
+Spustenie programu: 
+
+Pre kompiláciu programu je potrebné najskôr previesť príkaz 'make'.
+
+./ipk-sniffer {-i <interface>} {-n <0-n>} {-p <0-65535>} {--tcp|-t} {--udp|-u} 
+
+* -i: určuje rozhranie, na ktorom bude program packety odchytávať, ak nie je zadané, tak sa vypíše zoznam aktívnych rozhraní
+* -n: udáva počet packetov, ktoré program odchytí, implicitne sa uvažuje počet 1
+* -p: špecifikuje číslo portu, na ktorom sa budú packety odchytávať, implicitne sa uvažujú všetky porty
+* --tcp[-t]: filter pre odchytávanie TCP packetov (v prípade, že nie zvolená voľba --udp ani --tcp sa implicitne uvažuje s filtrom pre TCP packety)
+* --udp[-u]: filter pre odchytávanie UDP packetov (v prípade, že nie zvolená voľba --tcp ani --udp sa implicitne uvažuje s filtrom pre UDP packety)
+* --help[-h]: vypíše krátku nápovedu k použitiu programu

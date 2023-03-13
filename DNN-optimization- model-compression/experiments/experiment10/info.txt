@@ -1,0 +1,4 @@
+--mut_prob 0.5 --mut_param 1.0 --gen 10 --pop_size 100
+Epochs = 15
+layer_ranges = {"Layer1": [ (2,10), (1,7), (1,4)],
+                "Layer2": [ (2,16), (2,8), (1,5)]}

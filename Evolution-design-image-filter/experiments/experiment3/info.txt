@@ -1,0 +1,7 @@
+Image: lena_256_20%
+Resolution: 256x256
+Mutation value: 0.1
+Mutation increase: 0.05
+Population size: 7
+Generations: 200
+CGP rowsXcols: 8x9

@@ -1,0 +1,42 @@
+#### Stručně odpovězte na následující otázky: ######
+
+1. Proč je nutné určovat, zda má výpočet pokračovat?
+==============================================================================
+Je to dôležité z hľadiska toho, aby sme vedeli či ďalej pokračovať v prevádzaní iterácií alebo výpočet ukončit.
+V prípade, že výpoćet fraktálu presiahne hodnotu komplexného čísla > 4 vieme z charakteristiky výpočtu povedať,
+že bude hodnota konvergovať k nekonečnu a v takom prípade už netreba ďalej počítať. Sme tak vďaka tomu schopní obmedziť počty iterácií a urýchliť výpočet.
+
+2. Byla "Line" vektorizace efektivní? Proč?
+==============================================================================
+Line vektorizácia nie je príliš efektívna z hladiska väčších matíc, kde pre dlhšie riadky sa nemusí už výpočet zmestiť do cache, čím sa spomalí výpočet.
+Napriek tomu je táto vektorizácia rýchlejšia ako referenčná implementácia najmä vďaka efektívnejšej vektorizácií cyklov. Taktiež pri samotnej charakteristike výpočtu
+mandelbrotovej množiny môže dôjsť k prekročeniu hodnoty 4 pre jeden pixel, no výpočet musí prebiehať ďalej až dokým nenastane tento prípad pre všetky pixely v riadku čo je tiež neefektívne.
+
+
+3. Jaká byla dosažena výkonnost v Intel Advisoru pro jednotlivé implementace 
+(v GFLOPS)?
+==============================================================================
+Line: 23.04
+Batch: 19.39
+
+4. Jaká část kódu byla paralizována v "Line" implementaci? Vyčteme tuto 
+informaci i u batch kalkulátoru?
+==============================================================================
+V Line bola vektorizovaná časť kódu, ktorá sa vztahuje na najzanorenejší cyklus for, ku ktorému bola priradená pragma, ktorá napovedá compileru
+aby táto časť bola vektorizovaná. Jedná sa o cyklus na riadku 70. Táto časť cyklu spracováva pixely po riadku a sú v nej sústredené hlavné výpočty.
+ V Batch je možné tiež vyčítať, ktorá časť kódu bola vektorizovaná (cyklus na riadku 78 - BatchMandelCalculator.cc:78) a jedná sa o funkcionalitou
+ obdobný for cyklus ako pri Line vektorizacií.
+
+5. Co vyčteme z Roofline modelu pro obě vektorizované implementace?
+==============================================================================
+Vyčítame z nich najmä výkonnosť v GFLOPS pre vektorizované cykly, taktiež s akými dátovými typmi sa pracuje a aké typy inštrukcií sú použité.
+Je možné vyčítať, koľko času bolo strávených v jednotlivých cykloch. Poslednou dôležitou časťou je to, že k akej priepustnej šírke(bandwidth)
+sa pri výpočetných cykloch dostaneme pre jednotlivé úrovňe cache pamätí(L1,L2,...) a či je daný výpočetný cyklus a jeho výkonnosť podmienená (obmedzená)
+po pamäťovej stránke (memory bound).
+
+Line implementácia: Hlavný výpočetný cyklus sa dostal tesne pod úroveň L2 cache priepustnosti a taktiež je možné vyčítať to, že je pamäťovo obmedezný. Jeho výkonnosť 
+sa priblížila k 30 GFLOPS
+Batch implementácia: Podobne ako v Line, sa cyklus dostal pod hranicu L2 priepustnosti, ale nie je ešte pamäťovo obmedený a jeho výkonnosť stúplna na 46 GFLOPS.
+
+
+

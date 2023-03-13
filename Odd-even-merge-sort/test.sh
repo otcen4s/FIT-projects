@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ $# -lt 1 ];then 
+    numbers=8;
+else
+    numbers=$1;
+fi;
+
+#preklad cpp zdrojaku
+mpic++ --prefix /usr/local/share/OpenMPI -o oems oems.cpp
+
+
+#vyrobeni souboru s random cisly
+dd if=/dev/random bs=1 count=$numbers of=numbers status=none
+
+#spusteni
+mpirun --prefix /usr/local/share/OpenMPI -oversubscribe -np 20 oems
+
+#uklid
+rm -f oems numbers

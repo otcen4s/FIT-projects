@@ -1,0 +1,7 @@
+Image: 
+Resolution:
+Mutation value:
+Mutation increase:
+Population size:
+Generations:
+CGP rowsXcols:

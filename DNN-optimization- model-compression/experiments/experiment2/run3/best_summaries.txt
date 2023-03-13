@@ -1,0 +1,112 @@
+GENERATION: 1
+Model: "model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 28, 28, 1)]       0         
+                                                                 
+ conv2d_112 (Conv2D)         (None, 28, 28, 3)         111       
+                                                                 
+ max_pooling2d_112 (MaxPooli  (None, 14, 14, 3)        0         
+ ng2D)                                                           
+                                                                 
+ conv2d_113 (Conv2D)         (None, 4, 4, 5)           245       
+                                                                 
+ max_pooling2d_113 (MaxPooli  (None, 2, 2, 5)          0         
+ ng2D)                                                           
+                                                                 
+ flatten_56 (Flatten)        (None, 20)                0         
+                                                                 
+ dropout_56 (Dropout)        (None, 20)                0         
+                                                                 
+ dense_56 (Dense)            (None, 10)                210       
+                                                                 
+=================================================================
+Total params: 566
+Trainable params: 566
+Non-trainable params: 0
+_________________________________________________________________
+GENERATION: 2
+Model: "model_1"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_2 (InputLayer)        [(None, 28, 28, 1)]       0         
+                                                                 
+ conv2d_208 (Conv2D)         (None, 28, 28, 3)         78        
+                                                                 
+ max_pooling2d_208 (MaxPooli  (None, 14, 14, 3)        0         
+ ng2D)                                                           
+                                                                 
+ conv2d_209 (Conv2D)         (None, 4, 4, 6)           294       
+                                                                 
+ max_pooling2d_209 (MaxPooli  (None, 2, 2, 6)          0         
+ ng2D)                                                           
+                                                                 
+ flatten_104 (Flatten)       (None, 24)                0         
+                                                                 
+ dropout_104 (Dropout)       (None, 24)                0         
+                                                                 
+ dense_104 (Dense)           (None, 10)                250       
+                                                                 
+=================================================================
+Total params: 622
+Trainable params: 622
+Non-trainable params: 0
+_________________________________________________________________
+GENERATION: 3
+Model: "model_2"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_3 (InputLayer)        [(None, 28, 28, 1)]       0         
+                                                                 
+ conv2d_442 (Conv2D)         (None, 28, 28, 6)         156       
+                                                                 
+ max_pooling2d_442 (MaxPooli  (None, 14, 14, 6)        0         
+ ng2D)                                                           
+                                                                 
+ conv2d_443 (Conv2D)         (None, 4, 4, 6)           582       
+                                                                 
+ max_pooling2d_443 (MaxPooli  (None, 2, 2, 6)          0         
+ ng2D)                                                           
+                                                                 
+ flatten_221 (Flatten)       (None, 24)                0         
+                                                                 
+ dropout_221 (Dropout)       (None, 24)                0         
+                                                                 
+ dense_221 (Dense)           (None, 10)                250       
+                                                                 
+=================================================================
+Total params: 988
+Trainable params: 988
+Non-trainable params: 0
+_________________________________________________________________
+GENERATION: 4
+Model: "model_3"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_4 (InputLayer)        [(None, 28, 28, 1)]       0         
+                                                                 
+ conv2d_768 (Conv2D)         (None, 28, 28, 3)         78        
+                                                                 
+ max_pooling2d_768 (MaxPooli  (None, 14, 14, 3)        0         
+ ng2D)                                                           
+                                                                 
+ conv2d_769 (Conv2D)         (None, 4, 4, 5)           245       
+                                                                 
+ max_pooling2d_769 (MaxPooli  (None, 2, 2, 5)          0         
+ ng2D)                                                           
+                                                                 
+ flatten_384 (Flatten)       (None, 20)                0         
+                                                                 
+ dropout_384 (Dropout)       (None, 20)                0         
+                                                                 
+ dense_384 (Dense)           (None, 10)                210       
+                                                                 
+=================================================================
+Total params: 533
+Trainable params: 533
+Non-trainable params: 0
+_________________________________________________________________

@@ -1,0 +1,538 @@
+#!/bin/sh
+
+POSIXLY_CORRECT=yes
+
+# TATO FUNKCIA PREMIENA DATUM ZADANY V LOG FILE A KONVERTUJE HO NA FORMAT YYYYMMDDHMMSS #
+convertTime(){
+DATE="$1"
+
+day=$(printf '%s\n' "$DATE" | cut -c1-2 )
+month=$(printf '%s\n' "$DATE" | cut -c3-5 )
+year=$(printf '%s\n' "$DATE" | cut -c6-9 )
+hours=$(printf '%s\n' "$DATE" | cut -c10-11 )
+min=$(printf '%s\n' "$DATE" | cut -c12-13 )
+sec=$(printf '%s\n' "$DATE" | cut -c14-15 )
+
+case "$month" in
+	Jan)
+		month=$(printf '%s\n' "$month" | sed 's/Jan/01/1' )
+		;;
+	Feb)
+		month=$(printf '%s\n' "$month" | sed 's/Feb/02/1' )
+		;;
+	Mar)
+		month=$(printf '%s\n' "$month" | sed 's/Mar/03/1' )
+		;;
+	Apr)
+		month=$(printf '%s\n' "$month" | sed 's/Apr/04/1' )
+		;;
+	May)
+		month=$(printf '%s\n' "$month" | sed 's/May/05/1' )
+		;;
+	Jun)
+		month=$(printf '%s\n' "$month" | sed 's/Jun/06/1' )
+		;;
+	Jul)
+		month=$(printf '%s\n' "$month" | sed 's/Jul/07/1' )
+		;;
+	Aug)
+		month=$(printf '%s\n' "$month" | sed 's/Aug/08/1' )
+		;;
+	Sep)
+		month=$(printf '%s\n' "$month" | sed 's/Sep/09/1' )
+		;;
+	Oct)
+		month=$(printf '%s\n' "$month" | sed 's/Oct/10/1' )
+		;;
+	Nov)
+		month=$(printf '%s\n' "$month" | sed 's/Nov/11/1' )
+		;;
+	Dec)
+		month=$(printf '%s\n' "$month" | sed 's/Dec/12/1' )
+		;;
+esac
+
+printf '%s\n' "$year$month$day$hours$min$sec"
+}
+
+# PRECHADZA VSETKY ARGUMENTY A AK NAJDE NEJAKY TYP V CASE TAK HO PREPISE #
+for opt in "$@"; do
+	shift
+	case "$opt" in
+		"-ip") set -- "$@" "-i" ;;
+		"-uri") set -- "$@" "-u" ;;
+		*) set -- "$@" "$opt"
+	esac
+done
+
+# NASTAV HODNOTY #
+after=0; before=0; 
+ADATETIME=0; BDATETIME=0
+
+
+################## CYKLUS FOR FILTRUJE PREPINACE Z PRIKAZOVEJ RIADKY ##################
+for i in "$@"; do
+	# CASE FILTROV/PREPINACOV #
+	case $1 in
+		-a)
+			shift
+			ADATETIME=$1	
+			ADATETIME=$(printf '%s\n' "$ADATETIME" | sed 's/[[:space:]]//g' | sed 's/-//g' | sed 's/://g' )
+			
+			# AK JE DATUM DLHSI AKO 14 ZNAKOV TAK VYPISE CHYBU ---> NEBOL ZADANY DATUM #
+			strlen=$(printf '%s' "$ADATETIME" | wc -m )
+			if [ "$strlen" -gt '14' ]; then
+				printf "No input given\n" >&2
+				exit 1
+			fi
+
+			sec=$(printf '%s\n' "$ADATETIME" | cut -c14-15 )
+			if [ -z "$sec" ]; then
+				ADATETIME=$ADATETIME"00"
+			fi
+
+
+			after=1
+		    shift 
+			;;
+		-b)	
+			shift
+			if [ -z "$1" ]; then
+				printf "No input given" >&2
+				exit 1
+			fi
+			BDATETIME=$1
+			BDATETIME=$(printf '%s\n' "$BDATETIME" | sed 's/[[:space:]]//g' | sed 's/-//g' | sed 's/://g' )
+
+			# AK JE DATUM DLHSI AKO 14 ZNAKOV TAK VYPISE CHYBU ---> NEBOL ZADANY DATUM #
+			strlen=$(printf '%s' "$BDATETIME" | wc -m )
+			if [ "$strlen" -gt '14' ]; then
+				printf "No input given\n" >&2
+				exit 1
+			fi
+
+			sec=$(printf '%s\n' "$BDATETIME" | cut -c14-15 )
+			if [ -z "$sec" ]; then
+				BDATETIME=$BDATETIME"00"
+			fi
+
+			before=1
+			shift 
+			;;
+		-i)
+			shift
+			IPADDR=$1
+			shift
+			;;
+		-u)
+			shift
+			URI_REGEX=$1
+			URI_REGEX=$( printf '%s' "$URI_REGEX" | sed -e 's@\$@(/|$)@g' | sed -e 's@\^@/@g' | sed -e 's@(@\\(@g' | sed -e 's@|@\\|@g' | sed -e 's@)@\\)@g' )
+			shift
+			;;
+ -[^abiu]*)
+			printf "Unknown option\n" >&2
+			exit 1
+			;;
+	esac
+done
+
+# NASTAVI HODNOTY PREMENNYCH #
+list_ip=0; list_hosts=0; list_uri=0; hist_ip=0; hist_load=0
+
+if [ -z "$1" ] && [ -z "$2" ]; then
+		content=$( cat - | grep -E "$URI_REGEX" | grep "$IPADDR" )
+
+		printf '%s\n' "$content" | while read -r line; do
+
+			DATE=$(printf '%s' "$line" | awk '{ print $4 }' | cut -c2- | sed 's/://g' | sed 's/\///g' )	
+			DATE=$( convertTime "$DATE" )
+			
+			if [ "$after" = '1' ] && [ "$DATE" -le "$ADATETIME" ]; then
+				continue
+			elif [ "$before" = '1' ] && [ "$DATE" -ge "$BDATETIME" ]; then
+				break
+			fi
+				
+			printf '%s\n' "$line"
+		done
+
+	    shift
+	exit 0
+fi
+
+########################## CASE PRE PRIKAZY ############################
+case $1 in 
+	list-ip) list_ip=1 ;;
+	list-hosts) list_hosts=1 ;;
+	list-uri) list_uri=1 ;;
+	hist-ip) hist_ip=1 ;;
+	hist-load) hist_load=1 ;;
+	*) # VYPISE SUBOR PODLA ZADANYCH FILTROV #
+		for n in $(seq 1 $#); do
+
+			if file --mime-type "$1" | grep -q gzip$; then
+				content=$( zcat "$1" | grep -E "$URI_REGEX" | grep "$IPADDR" )
+            else
+			   	content=$( cat "$1" | grep -E "$URI_REGEX" | grep "$IPADDR" )
+         	fi
+
+         	if [ -z "$content" ]; then
+				continue
+        	fi
+			hours=$(printf '%s\n' "$DATE" | cut -c10-11 )
+			printf '%s\n' "$content" | while read -r line; do
+ 
+              DATE=$(printf '%s\n' "$line" | awk '{ print $4 }' | cut -c2- | sed 's/://g' | sed 's/\///g' )
+	          DATE=$( convertTime "$DATE" )
+        
+			  if [ "$after" = '1' ] && [ "$DATE" -le "$ADATETIME" ]; then
+				  continue
+
+              elif [ "$before" = '1' ] && [ "$DATE" -ge "$BDATETIME" ]; then
+                  break
+	  		  fi
+
+              printf '%s\n' "$line"
+			  
+    		done
+
+			shift
+		done
+		exit 0
+esac
+
+shift
+
+# AK ZA SUBOROM UZ NIE JE ZIADNY ARGUMENT(SUBOR) TAK NIC NEROBI #
+if [ -z "$1" ]; then
+	files="-"
+else # INAK ULOZI DO PREMENNEJ VSETKY ZVYSNE SUBORY #
+	for n in $(seq 1 $#); do
+		files=$files$1" "
+		shift
+	done
+
+	files=${files%?}
+fi
+
+##################### LIST-IP ########################
+if [ "$list_ip" = '1' ]; then
+
+	for file in $files; do
+	
+		if file --mime-type "$file" | grep -q gzip$; then
+		  content=$( zcat "$file" | grep -E "$URI_REGEX" | grep "$IPADDR" )
+		else
+		  content=$( cat "$file" | grep -E "$URI_REGEX" | grep "$IPADDR" )
+		fi
+		
+		if [ -z "$content" ]; then
+			continue
+		fi
+
+		output=$output$(printf '%s\n' "$content" | while read -r line; do
+
+			DATE=$(printf '%s\n' "$line" | awk '{ print $4 }' | cut -c2- | sed 's/://g' | sed 's/\///g' )
+            DATE=$( convertTime "$DATE" )
+
+			if [ "$after" = '1' ] && [ "$DATE" -le "$ADATETIME" ]; then
+				continue
+			elif [ "$before" = '1' ] && [ "$DATE" -ge "$BDATETIME" ]; then
+				break
+			fi
+			
+			printf '%s\n' "$line" | awk '{printf "%s\n",$1}'
+						
+		done)
+		
+	done
+	
+# AK NIC NENACITA ZO SUBORU #
+	if [ -z "$output" ]; then
+           echo "No results found" >&2
+           exit 1
+    fi
+
+	distro=$(uname)
+	case $distro in
+		FreeBSD) output=$(printf '%s\n' "$output" | sort | uniq -c | sort -u | cut -c6- | sort );;
+		*) output=$(printf '%s\n' "$output" | sort | uniq -c | sort -u | cut -c9- | sort );;
+	esac
+
+  	printf '%s\n' "$output"
+
+######################## LIST-HOSTS ######################
+elif [ "$list_hosts" = '1' ]; then
+	for file in $files; do
+ 
+         if file --mime-type "$file" | grep -q gzip$; then
+           content=$( zcat "$file" | grep -E "$URI_REGEX" | grep "$IPADDR" )
+         else
+           content=$( cat "$file" | grep -E "$URI_REGEX" | grep "$IPADDR" )
+         fi
+ 
+         if [ -z "$content" ]; then
+             continue
+         fi
+ 
+         output=$output$(printf '%s\n' "$content" | while read -r line; do
+ 
+             DATE=$(printf '%s\n' "$line" | awk '{ print $4 }' | cut -c2- | sed 's/://g' | sed 's/\///g' )
+	         DATE=$( convertTime "$DATE" )
+ 
+             if [ "$after" = '1' ] && [ "$DATE" -le "$ADATETIME" ]; then
+                 continue
+             elif [ "$before" = '1' ] && [ "$DATE" -ge "$BDATETIME" ]; then
+                 break
+             fi
+             
+			 IP=$(printf '%s\n' "$line" | awk '{printf "%s",$1}')
+			 
+			 if host "$IP" > /dev/null; then 
+			 	host "$IP" | awk '{printf "%s\n", $5}'
+			 else
+				printf '%s\n' "$IP" | awk '{printf "%s\n", $0}'
+			 fi
+		 done)
+     done
+ 
+# AK NIC NENACITA ZO SUBORU #
+	 if  [ -z "$output" ]; then
+            echo "No results found" >&2
+            exit 1
+     fi
+
+	 distro=$(uname)
+	 case $distro in
+	     FreeBSD) output=$(printf '%s\n' "$output" | sort | uniq -c | sort -u | cut -c6- | sort );;
+		 *) output=$(printf '%s\n' "$output" | sort | uniq -c | cut -c9- | sort );;
+	 esac
+
+     printf '%s\n' "$output"
+
+#################### LIST-URI #####################
+elif [ "$list_uri" = '1' ]; then
+	for file in $files; do
+
+          if file --mime-type "$file" | grep -q gzip$; then
+            content=$( zcat "$file" | grep -E "$URI_REGEX" | grep "$IPADDR" )
+          else
+            content=$( cat "$file" | grep -E "$URI_REGEX" | grep "$IPADDR" )
+          fi
+ 
+          if [ -z "$content" ]; then
+              continue
+          fi
+          output=$output$(printf '%s\n' "$content" | while read -r line; do
+  	
+              DATE=$(printf '%s\n' "$line" | awk '{ print $4 }' | cut -c2- | sed 's/://g' | sed 's/\///g' )
+              DATE=$( convertTime "$DATE" )
+  
+              if [ "$after" = '1' ] && [ "$DATE" -le "$ADATETIME" ]; then
+                  continue
+              elif [ "$before" = '1' ] && [ "$DATE" -ge "$BDATETIME" ]; then
+                  break
+              fi
+
+			  URI=$(printf '%s\n' "$line" | awk '{printf "%s", $7}' )
+			  slash=$(printf '%s\n' "$URI" | cut -c1 )
+			  if [ "$slash" = "/" ]; then
+				  printf '%s\n' "$URI" | awk '{printf "%s\n", $0}'
+			  fi
+			done)
+ 
+      done
+
+# AK NIC NENACITA ZO SUBORU #
+	if [ -z "$output" ]; then
+           echo "No results found" >&2
+           exit 1
+    fi
+
+	distro=$(uname)
+	case $distro in
+		FreeBSD) output=$(printf '%s\n' "$output" | sort | uniq -c | sort -u | cut -c6- | sort );;
+		*) output=$(printf '%s\n' "$output" | sort | uniq -c | sort -u | cut -c9- | sort );;
+	esac
+
+    printf '%s\n' "$output"
+
+################## HIST-IP #####################
+elif [ "$hist_ip" = '1' ]; then
+
+	for file in $files; do
+
+          if file --mime-type "$file" | grep -q gzip$; then
+            content=$( zcat "$file" | grep -E "$URI_REGEX" | grep "$IPADDR" )
+          else
+            content=$( cat "$file" | grep -E "$URI_REGEX" | grep "$IPADDR" )
+          fi
+ 
+          if [ -z "$content" ]; then
+              continue
+          fi
+          output=$output$(printf '%s\n' "$content" | while read -r line; do
+  	  
+              DATE=$(printf '%s\n' "$line" | awk '{ print $4 }' | cut -c2- | sed 's/://g' | sed 's/\///g' )
+              DATE=$( convertTime "$DATE" )
+  
+              if [ "$after" = '1' ] && [ "$DATE" -le "$ADATETIME" ]; then
+                  continue
+              elif [ "$before" = '1' ] && [ "$DATE" -ge "$BDATETIME" ]; then
+                  break
+              fi
+
+			  IP_HIST=$(printf '%s\n' "$line" | awk '{printf "%s", $1}' )
+			  printf '%s\n' "$IP_HIST" | sort | awk '{printf "%s\n", $0}'
+          done)
+ 
+      done
+    
+# AK NIC NENACITA ZO SUBORU #
+	if [ -z "$output" ]; then
+           echo "No results found" >&2
+           exit 1
+    fi
+
+	distro=$(uname)
+	case $distro in
+		FreeBSD) output=$(printf '%s\n' "$output" | uniq -c | sort -u | cut -c4- | sort -r );;
+		*) output=$(printf '%s\n' "$output" | uniq -c | sort -u | cut -c7- | sort -r );;
+	esac
+# CYKLUS MI POMOCOU AWK VYTIAHNE Z UNIQ-nuteho outputu POCET VYSKYTOV IP ADRIES #	
+	next=$next$( printf '%s\n' "$output" | while read -r line; do
+		cut_number=$(printf '%s\n' "$line" | awk ' { printf "%s\n", $1 } ')
+		printf '%s\n' "$cut_number"
+	done)
+
+# VYTIAHNE Z PREMENNEJ IBA PRVE CISELNE HODNOTY A ULOZI #
+	  number=$number$(printf '%s\n' "$next" | while read -r line; do
+		 	n=$(printf '%s\n' "$line" | awk ' { printf "%s",$1 }' )
+			printf '%s ' "$n"
+	   done)
+# ULOZI DO ip_adress IBA HODNOTY IP ADRIES #
+	   ip_adress=$ip_adress$(printf '%s\n' "$output" | while read -r line; do
+		 	adress=$(printf '%s\n' "$line" | awk ' { print $2 }' )
+			printf '%s\n' "$adress"
+	   done)
+# AK NIE JE NACITANA ZIADNA IP ADRESA #
+	  if [ -z "$ip_adress" ]; then
+		  echo "No results found" >&2
+		  exit 1
+	  fi
+
+	  count=0 # pocitadlo pre iterovanie znakov v premennej $number #
+
+# VYTVORI HISTOGRAM Z PREMENNYCH $ip_adress A $number #
+IP_HIST=$IP_HIST$(printf '%s\n' "$ip_adress" | while read -r line; do
+			 count=$((count+1))
+
+			 output=$(printf '%s\n' "$line" | awk '{ printf "%s ",$1 }' )
+			 output_number=$(printf '%s\n' "$number" | cut -d ' ' -f$count )
+
+			 if [ "$output_number" -gt '0' ]; then
+				next_count=0
+				hashtag=""
+			 	while true; do
+					if [ "$next_count" -eq "$output_number" ]; then
+						break
+					else
+						hashtag=$hashtag"#"
+						next_count=$((next_count+1))
+					fi
+				done
+			 fi
+
+			 output=$output"($output_number) : "$hashtag 
+			 printf '%s\n' "$output"
+	  done)
+
+	  printf '%s\n' "$IP_HIST"
+
+
+################### HIST-LOAD ###################
+elif [ "$hist_load" = '1' ]; then
+	 
+	for file in $files; do
+
+          if file --mime-type "$file" | grep -q gzip$; then
+            content=$( zcat "$file" | grep -E "$URI_REGEX" | grep "$IPADDR" )
+          else
+            content=$( cat "$file" | grep -E "$URI_REGEX" | grep "$IPADDR" )
+          fi
+ 
+          if [ -z "$content" ]; then
+              continue
+          fi
+          output=$output$(printf '%s\n' "$content" | while read -r line; do
+  	  
+              DATE=$(printf '%s\n' "$line" | awk '{ print $4 }' | cut -c2- | sed 's/://g' | sed 's/\///g' )
+              DATE=$( convertTime "$DATE" )
+  
+              if [ "$after" = '1' ] && [ "$DATE" -le "$ADATETIME" ]; then
+                  continue
+              elif [ "$before" = '1' ] && [ "$DATE" -ge "$BDATETIME" ]; then
+                  break
+              fi
+			  
+			  HIST_LOAD_TIME=$(printf '%s\n' "$DATE" | cut -c1-10  )
+			  printf '%s\n' "$HIST_LOAD_TIME" 
+          done)
+	done
+# AK NIC NENACITA ZO SUBORU #
+	if [ -z "$output" ]; then
+           echo "No results found" >&2
+           exit 1
+    fi
+# ZORADI SA OUTPUT A ZISKAM POCET DOTAZOV V URCITOM DATUME VRATANE HODINY #    
+	distro=$(uname)
+    case $distro in
+        FreeBSD) output=$(printf '%s\n' "$output" | sort | uniq -c );;
+        *) output=$(printf '%s\n' "$output" | sort | uniq -c );;
+    esac
+	
+# ULOZI DO number POCET DOTAZOV #
+	number=$number$(printf '%s\n' "$output" | while read -r line; do
+		n=$(printf '%s\n' "$line" | awk ' { printf "%s\n",$1 }' )
+		printf '%s ' "$n"
+	done)
+	 
+# UPRAV output ABY OSTAL IBA DATUM #
+	case $distro in
+        FreeBSD) output=$(printf '%s\n' "$output" | cut -c6- );;
+        *) output=$(printf '%s\n' "$output" | cut -c9-);;
+    esac
+
+# SPRACUJE HISTOGRAM A VYPISE #
+HIST_LOAD=$HIST_LOAD$(printf '%s\n' "$output" | while read -r line; do
+		 count=$((count+1))
+		 
+    	 hist_year=$( printf '%s\n' "$line" | cut -c1-4 )
+		 hist_month=$( printf '%s\n' "$line" | cut -c5-6 )
+		 hist_day=$( printf '%s\n' "$line" | cut -c7-8 )
+		 hist_hour=$( printf '%s\n' "$line" | cut -c9-10 )
+
+		 # -d funguje ako delimiter a -f je field, ktory chcem vypisat #
+		 output_number=$(printf '%s\n' "$number" | cut -d ' ' -f$count )
+
+		 if [ "$output_number" -gt '0' ]; then
+			next_count=0
+			hashtag=""
+			 while true; do
+				if [ "$next_count" -eq "$output_number" ]; then
+					break
+				else
+					hashtag=$hashtag"#"
+					next_count=$((next_count+1))
+				fi
+			done
+		 fi
+		 hist_output=$hist_year"-"$hist_month"-"$hist_day" "$hist_hour":00 ($output_number) : "$hashtag
+	     printf '%s\n' "$hist_output"
+	  done)
+
+	  printf '%s\n' "$HIST_LOAD"
+ 
+fi
+exit 0

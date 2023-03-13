@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>https://eexploremee.000webhostapp.com/</title>
+    <script src="js/scripts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&family=Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body id="page-top">
+<div id="main">
+    <section id="section-home">
+        <header>
+            <div class="img-fluid">
+                <h1><a href="https://eexploremee.000webhostapp.com/"><img src="images/logo.png" alt="logo" class="img-logo"></a></h1>
+            </div>
+        </header>
+        <nav class="my-navbar" id="navbar">
+            <div class="menu">
+                <ul>
+                    <li class="dropdown">
+                        <span class="glow-on-hover"><a>About Me</a></span>
+                        <ul>
+                            <li><a href="#section-experiences">Experiences</a></li>
+                            <li><a href="#section-personal-data">Personal Data</a></li>
+                            <li><a href="#section-hobbies">Hobbies</a></li>
+                        </ul>
+                    </li>
+                    <li><span class="glow-on-hover"><a href="#section-education">Education</a></span></li>
+                    <li><span class="glow-on-hover"><a href="#section-projects">Projects</a></span></li>
+                </ul>
+            </div>
+            <div class="mobile-menu">
+                <p id="menu">Menu</p>
+                <div class="menu-icon">
+                    <a href="javascript:void(0);" class="icon" onclick="mobileNav()">&#9776;</a>
+                    <ul id="hidden-menu" class="hidden">
+                        <li class="dropdown-mobile">
+                           <a onclick="showSubList()">About Me</a>
+                            <ul id="sub-list" class="hidden">
+                                <li><a href="#section-experiences">Experiences</a></li>
+                                <li><a href="#section-personal-data">Personal Data</a></li>
+                                <li><a href="#section-hobbies">Hobbies</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#section-education">Education</a></li>
+                        <li><a href="#section-projects">Projects</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+    </section>
+
+    <section id="section-education">
+        <div class="content">
+            <h2>Education</h2>
+            <div class="images-education">
+                <p onclick="showDiv('show-harvard');"><img src="images/harvard.png" alt="harvard" class="img"></p>
+                <p onclick="showDiv('show-cambridge');"><img src="images/cambridge.png" alt="cambridge" class="img"></p>
+                <p onclick="showDiv('show-stanford');"><img src="images/stanford.png" alt="stanford" class="img"></p>
+            </div>
+            <div class="hidden-text">
+                <div id="show-harvard">
+                    <span id="hide-harvard" onclick="hideDiv('show-harvard');"></span>
+                    <p class="welcome-sentence">Yes I really studied Harvard. Here is what I learned.</p>
+                    <p class="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                </div>
+                <div id="show-cambridge">
+                    <span id="hide-cambridge" onclick="hideDiv('show-cambridge');"></span>
+                    <p class="welcome-sentence">Yes I really studied Cambridge. Here is what I learned.</p>
+                    <p class="text">Plusieurs variations de Lorem Ipsum peuvent être trouvées ici ou là, mais la majeure partie d'entre elles a été altérée par l'addition d'humour ou de mots aléatoires qui ne ressemblent pas une seconde à du texte standard. Si vous voulez utiliser un passage du Lorem Ipsum, vous devez être sûr qu'il n'y a rien d'embarrassant caché dans le texte. </p></div>
+                <div id="show-stanford">
+                    <span id="hide-stanford" onclick="hideDiv('show-stanford');"></span>
+                    <p class="welcome-sentence">Yes I really studied Stanford. Here is what I learned.</p>
+                    <p class="text">L'extrait standard de Lorem Ipsum utilisé depuis le XVIè siècle est reproduit ci-dessous pour les curieux. Les sections 1.10.32 et 1.10.33 du "De Finibus Bonorum et Malorum" de Cicéron sont aussi reproduites dans leur version originale, accompagnée de la traduction anglaise de H. Rackham (1914).</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-projects">
+        <div class="content">
+            <h2>Projects</h2>
+            <div class="content-text">
+                <p class="projects-text">Lifestyle and motivation dated journal 2019</p>
+                <p class="projects-img"><img src="images/lifestyle.png" alt="lifestyle" class="lifestyle"></p>
+                <p class="projects-text">Book publication 2015: "How to work while travelling"</p>
+                <p class="projects-img"><img src="images/book.png" alt="book" class="book"></p>
+                <p class="projects-text">Organic bio farm co-founder</p>
+                <p class="projects-img"><img src="images/bio.png" alt="bio" class="bio"></p>
+                <p class="projects-text">Olympic games food distribution, Tokyo, 2021</p>
+                <p class="projects-img"><img src="images/olympic.png" alt="olympic games" class="olympic"></p>
+                <p class="projects-text">Mobile application "FindMyFood" designer and CEO</p>
+                <p class="projects-img"><img src="images/mobile.png" alt="mobile" class="mobile"></p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="section-personal-data">
+        <div class="content">
+            <h2>Personal data</h2>
+            <div class="data">
+                <button onclick="displayPersonalData('relationship');" type="button" class="collapsible">Relationship</button>
+                <div class="content-text" id="relationship">
+                    <p>I got engaged to my girlfriend Tatiana a few months ago. We are planning on getting married next year.</p>
+                </div>
+                <button onclick="displayPersonalData('birth');" type="button" class="collapsible">Date of birth</button>
+                <div class="content-text" id="birth">
+                    <p>I was born at 20 pm on cold windy Wednesday the day when all Greek gods had disappeared. It was 29 March 1990.</p>
+                </div>
+                <button onclick="displayPersonalData('group');" type="button" class="collapsible">Blood Group</button>
+                <div class="content-text" id="group">
+                    <p>Very rare AB and a little bit of 0 group.</p>
+                </div>
+                <button onclick="displayPersonalData('address');" type="button" class="collapsible">Address</button>
+                <div class="content-text" id="address">
+                    <p>New Ark street 44/342, Whitechapel, London.</p>
+                </div>
+                <button onclick="displayPersonalData('evidence');" type="button" class="collapsible">Criminal Evidence</button>
+                <div class="content-text" id="evidence" >
+                   <p>Fortunately the only thing I ever killed was the spirit of laziness inside myself.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="section-hobbies">
+        <h2>My Interests</h2>
+        <div id="img-interests" class="images">
+            <p><img src="images/img2.jpg" alt="swimmer" class="img-2" id="img-uniq"></p>
+        </div>
+        <div class="btn">
+            <button class="btn-forward" onclick="changeImageForward();"> &#10095; </button>
+            <button class="btn-backward" onclick="changeImageBackward();"> &#10094; </button>
+        </div>
+    </section>
+
+    <section id="section-experiences">
+        <div class="content">
+            <h2>Experiences</h2>
+            <div class="data">
+                <div class="content-text">
+                    <span class="checkmark">&#10004;</span><p class="experiences-text">Member of Harvard bioinformatics research group</p>
+                    <span class="checkmark">&#10004;</span><p class="experiences-text">Three months of french language course in Dijon, France, summer 2019</p>
+                    <span class="checkmark">&#10004;</span><p class="experiences-text">Long-time volunteering in dog shelter</p>
+                    <span class="checkmark">&#10004;</span><p class="experiences-text">Jamie Oliver vegan cooking training in 2018</p>
+                    <span class="checkmark">&#10004;</span><p class="experiences-text">Charity worker for St.Anne's hospital, Southampton, Western England</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="social">
+        <h4 class="media">Social Media</h4>
+        <ul class="box">
+            <li><a href="#"><img src="images/facebook.png" alt="facebook"></a></li>
+            <li><a href="#"><img src="images/instagram.png" alt="instagram"></a></li>
+            <li><a href="#"><img src="images/twitter.png" alt="twitter"></a></li>
+        </ul>
+    </div>
+
+    <footer id="footer">
+        <div class="content">
+            <p>Copyright 2020 | Designed and Created by Matej Otčenáš</p>
+        </div>
+    </footer>
+</div>
+<script>
+    $(document).ready(function(){
+        $("a").on('click', function(event) {
+            if (this.hash !== "") {
+                event.preventDefault();
+                var hash = this.hash;
+
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 800, function(){
+
+                    window.location.hash = hash;
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

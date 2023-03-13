@@ -1,0 +1,7 @@
+Image: monkey256_50%
+Resolution: 256x256
+Mutation value: 0.1
+Mutation increase: 0.01
+Population size: 15
+Generations: 100
+CGP rowsXcols: 8x9

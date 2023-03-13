@@ -1,0 +1,34 @@
+.TH SSLSNIFF 1
+.SH MENO
+sslsniff \- monitoring a analýza SSL/TLS spojení.
+.SH PREHĽAD
+.B sslsniff
+[\fB\-i\fR \f INTERFACE\fR]
+[\fB\-r\fR \f file.pcapng\fR]
+.SH POPIS
+.B sslsniff 
+slúži na monitoring a analýzu SSL/TLS packetov, ktoré následne vypíše na štandardný výstup.
+Je možné monitorovať IPv4 aj IPv6 sieťové protokoly. Program nie je schopný spracovať súbor a súčastne 
+odchytávať a analyzovať packety na živom odposluchu, preto je potrebné použiť vždy iba jeden prepínač. 
+V prípade použitia oboch prepínačov program končí neúspechom.
+.SH PREPÍNAČE
+.TP
+.BR \-i " "\fIINTERFACE\fR
+určuje rozhranie, na ktorom bude program packety odchytávať.
+
+.TP
+.BR \-r  " "\fIfile.pcapng\fR
+určuje súbor typu pcapng, ktorý bude program spracovávať.
+
+.TP
+.BR \-h " "\fI[HELP]\fR
+vypíše nápovedu k použitiu programu.
+
+.SH ZOZNAM SÚBOROV
+zložka "xotcen01" obsahuje podsúbory "modules" a "headers", "Makefile", hlavný program "sslsniff.cpp", 
+výslednú manuálovu dokumentáciu "manual.pdf" a krátky manuál k programu "sslsniff.1".
+
+Zložka "modules" obsahuje následovné moduly programu: sni.cpp, print_info.cpp, packet_parser.cpp, 
+help_functions.cpp, handle_TCP.cpp, handle_SSL.cpp, bytes_count.cpp, pcap_setting.cpp, tcp_ip_parser.cpp.
+
+Zložka "headers" obsahuje hlavičkový súbor: sslsniff.h
