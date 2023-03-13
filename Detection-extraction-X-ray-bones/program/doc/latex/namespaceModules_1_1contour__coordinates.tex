@@ -1,0 +1,39 @@
+\hypertarget{namespaceModules_1_1contour__coordinates}{}\doxysubsection{Modules.\+contour\+\_\+coordinates Namespace Reference}
+\label{namespaceModules_1_1contour__coordinates}\index{Modules.contour\_coordinates@{Modules.contour\_coordinates}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespaceModules_1_1contour__coordinates_a17a0ebf46c5637051ac933cce74acc2a}{export\+\_\+coordinates}} (img\+\_\+edged, img\+\_\+name, OUTPUT, int, BONE\+\_\+\+ID\+\_\+C)
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+\begin{DoxyVerb}contour_coordinates.py: Exports the set of [x,y] coordinates of detected
+contour of third metacarpal bone. The output is stored into '.tps' files for
+each image separately.
+\end{DoxyVerb}
+ 
+
+\doxysubsubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceModules_1_1contour__coordinates_a17a0ebf46c5637051ac933cce74acc2a}\label{namespaceModules_1_1contour__coordinates_a17a0ebf46c5637051ac933cce74acc2a}} 
+\index{Modules.contour\_coordinates@{Modules.contour\_coordinates}!export\_coordinates@{export\_coordinates}}
+\index{export\_coordinates@{export\_coordinates}!Modules.contour\_coordinates@{Modules.contour\_coordinates}}
+\doxyparagraph{\texorpdfstring{export\_coordinates()}{export\_coordinates()}}
+{\footnotesize\ttfamily def Modules.\+contour\+\_\+coordinates.\+export\+\_\+coordinates (\begin{DoxyParamCaption}\item[{}]{img\+\_\+edged,  }\item[{}]{img\+\_\+name,  }\item[{}]{OUTPUT,  }\item[{}]{int,  }\item[{}]{BONE\+\_\+\+ID\+\_\+C }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Function exports contour coordinates into output file. If the image has
+detected more than one bone, two or more bone contours will be saved into
+one file.
+
+Parameters
+----------
+img_edged: list
+    Input image with detected contour (image consisted of 255 or 0 values)
+img_name: str
+    Name of the image bone (e.g. 1004_1962LP_F_upr)
+OUTPUT: str
+    Name of the output folder
+BONE_ID_C: int
+    Bone identifier number
+\end{DoxyVerb}
+ 

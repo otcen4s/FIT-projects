@@ -1,0 +1,61 @@
+\hypertarget{namespaceModules_1_1three__regions}{}\doxysubsection{Modules.\+three\+\_\+regions Namespace Reference}
+\label{namespaceModules_1_1three__regions}\index{Modules.three\_regions@{Modules.three\_regions}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespaceModules_1_1three__regions_aef4a162fbcc5b3db57e639ad7a517935}{get\+ROI}} (int, offset\+\_\+C, img, min\+\_\+len\+\_\+coordinates)
+\item 
+def \mbox{\hyperlink{namespaceModules_1_1three__regions_a1241c2b5749607b0009d3d13e02ed647}{regions}} (img, min\+\_\+len\+\_\+coordinates)
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+\begin{DoxyVerb}three_regions.py: Module for extraction ROI image including top y and bottom y
+coordinates to get region with the narrowest part.\end{DoxyVerb}
+ 
+
+\doxysubsubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceModules_1_1three__regions_aef4a162fbcc5b3db57e639ad7a517935}\label{namespaceModules_1_1three__regions_aef4a162fbcc5b3db57e639ad7a517935}} 
+\index{Modules.three\_regions@{Modules.three\_regions}!getROI@{getROI}}
+\index{getROI@{getROI}!Modules.three\_regions@{Modules.three\_regions}}
+\doxyparagraph{\texorpdfstring{getROI()}{getROI()}}
+{\footnotesize\ttfamily def Modules.\+three\+\_\+regions.\+get\+ROI (\begin{DoxyParamCaption}\item[{}]{int,  }\item[{}]{offset\+\_\+C,  }\item[{}]{img,  }\item[{}]{min\+\_\+len\+\_\+coordinates }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Function estimates the ROI image.
+
+Parameters
+----------
+offset: int
+    Offset for adujstment the image coordinates (size of the output image)
+img: array
+    Input image
+min_len_coordinates: list
+    List of two points indicating the narrowest part of the bone
+
+Returns
+-------
+array
+    roi image coordinates
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespaceModules_1_1three__regions_a1241c2b5749607b0009d3d13e02ed647}\label{namespaceModules_1_1three__regions_a1241c2b5749607b0009d3d13e02ed647}} 
+\index{Modules.three\_regions@{Modules.three\_regions}!regions@{regions}}
+\index{regions@{regions}!Modules.three\_regions@{Modules.three\_regions}}
+\doxyparagraph{\texorpdfstring{regions()}{regions()}}
+{\footnotesize\ttfamily def Modules.\+three\+\_\+regions.\+regions (\begin{DoxyParamCaption}\item[{}]{img,  }\item[{}]{min\+\_\+len\+\_\+coordinates }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Function obtains ROI for three separate regions including predefined offsets
+to improve prediciton and ommit not important parts of image.
+
+Parameters
+----------
+img: array
+    Input image
+min_len_coordinates: list
+    List of two points indicating the narrowest part of the bone
+
+Returns
+-------
+array, float, float
+    roi image array and float coordinates
+\end{DoxyVerb}
+ 

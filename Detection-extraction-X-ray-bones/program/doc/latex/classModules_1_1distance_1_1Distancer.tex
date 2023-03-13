@@ -1,0 +1,305 @@
+\hypertarget{classModules_1_1distance_1_1Distancer}{}\doxysubsection{Modules.\+distance.\+Distancer Class Reference}
+\label{classModules_1_1distance_1_1Distancer}\index{Modules.distance.Distancer@{Modules.distance.Distancer}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classModules_1_1distance_1_1Distancer_a398451cc8ba086d84d5ac73eb7843730}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classModules_1_1distance_1_1Distancer_a31894553943d5858134f0b245eb5a06e}{img}}, \mbox{\hyperlink{classModules_1_1distance_1_1Distancer_ad3534eaea810b199d14fa07bdf73bf52}{box}}, \mbox{\hyperlink{classModules_1_1distance_1_1Distancer_a4f58d98978d9becbf0b1b935c4679657}{filename}}=None, \mbox{\hyperlink{classModules_1_1distance_1_1Distancer_a5d38abd4d63cbfc368f0d41d6a422003}{bone\+\_\+id}}=None, \mbox{\hyperlink{classModules_1_1distance_1_1Distancer_a772e6196f71a033688983679268ea167}{OUTPUT}}=None)
+\item 
+def \mbox{\hyperlink{classModules_1_1distance_1_1Distancer_a9289b83d58efd06557be484fe8ac0a7e}{bottom\+MiddleX}} (self, int, bottomright\+\_\+y\+\_\+C, int, bottomright\+\_\+x\+\_\+C, int, topleft\+\_\+x\+\_\+C, int, offset\+\_\+C)
+\item 
+def \mbox{\hyperlink{classModules_1_1distance_1_1Distancer_ac25485ed54b6f8da38502a239b96a24b}{divide\+Bone}} (self, int, topleft\+\_\+x\+\_\+C, int, topleft\+\_\+y\+\_\+C, int, bottomright\+\_\+x\+\_\+C, int, bottomright\+\_\+y\+\_\+C, int, offset\+\_\+C)
+\item 
+def \mbox{\hyperlink{classModules_1_1distance_1_1Distancer_ac98db19a4d86cf5af87810b7e7c07941}{find\+Min\+Length}} (self, left\+\_\+side, right\+\_\+side, int, top\+\_\+y\+\_\+C=0, int, bottom\+\_\+y\+\_\+C=0, roi=False)
+\item 
+def \mbox{\hyperlink{classModules_1_1distance_1_1Distancer_a0f6adb94a680ba5c0f51d378a40d8275}{measure\+Meta}} (self)
+\item 
+def \mbox{\hyperlink{classModules_1_1distance_1_1Distancer_ad49b3416f0949ced0c3412e9f59b75c9}{measure\+Pythagoras}} (self, int, x1, int, y1, int, x2, int, y2)
+\item 
+def \mbox{\hyperlink{classModules_1_1distance_1_1Distancer_a164147e75b88277577e364adaa771655}{measure\+ROI}} (self, top\+\_\+y, bottom\+\_\+y)
+\item 
+def \mbox{\hyperlink{classModules_1_1distance_1_1Distancer_ad813a679b281c476878d4919b0eedc77}{pixels\+To\+Mm}} (self, pixels\+\_\+len)
+\item 
+def \mbox{\hyperlink{classModules_1_1distance_1_1Distancer_aeba4f14edb8375d1c50455264668dfc9}{top\+MiddleX}} (self, int, topleft\+\_\+y\+\_\+C, int, bottomright\+\_\+x\+\_\+C, int, topleft\+\_\+x\+\_\+C, int, offset\+\_\+C)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classModules_1_1distance_1_1Distancer_a5d38abd4d63cbfc368f0d41d6a422003}{bone\+\_\+id}}
+\item 
+\mbox{\hyperlink{classModules_1_1distance_1_1Distancer_ad3534eaea810b199d14fa07bdf73bf52}{box}}
+\item 
+\mbox{\hyperlink{classModules_1_1distance_1_1Distancer_a4f58d98978d9becbf0b1b935c4679657}{filename}}
+\item 
+\mbox{\hyperlink{classModules_1_1distance_1_1Distancer_a31894553943d5858134f0b245eb5a06e}{img}}
+\item 
+\mbox{\hyperlink{classModules_1_1distance_1_1Distancer_a772e6196f71a033688983679268ea167}{OUTPUT}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+\begin{DoxyVerb}Distancer class contains methods for analytical approach for third metacarpal
+bone width measurement.
+
+Methods
+-------
+measureMeta()
+    Counts the circumference of third metacarpal bone.
+measureROI(top_y, bottom_y)
+    Counts the circumference of three separate regions of third metacarpal bone.
+divideBone(topleft_x, topleft_y, bottomright_x, bottomright_y, offset)
+    Computes center line using cross product.
+findMinLength(left_side, right_side, top_y=None, bottom_y=None, roi=False)
+    Finds minimal distance between two points.
+measurePythagoras(x1, y1, x2, y2)
+    Computes distance between two points.
+pixelsToMm(pixels_len)
+    Converts pixels distance to real distance in milimeters using DPI(dots per inch).
+topMiddleX(topleft_y, bottomright_x, topleft_x, offset)
+    Finds top middle x coordinate.
+bottomMiddleX(bottomright_y, bottomright_x, topleft_x, offset)
+    Finds bottom middle x coordinate.
+\end{DoxyVerb}
+ 
+
+\doxysubsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classModules_1_1distance_1_1Distancer_a398451cc8ba086d84d5ac73eb7843730}\label{classModules_1_1distance_1_1Distancer_a398451cc8ba086d84d5ac73eb7843730}} 
+\index{Modules.distance.Distancer@{Modules.distance.Distancer}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Modules.distance.Distancer@{Modules.distance.Distancer}}
+\doxyparagraph{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Modules.\+distance.\+Distancer.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{img,  }\item[{}]{box,  }\item[{}]{filename = {\ttfamily None},  }\item[{}]{bone\+\_\+id = {\ttfamily None},  }\item[{}]{OUTPUT = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Parameters
+----------
+img: array
+    Input image (Canny edged image)
+box: array
+    Bounding box of third metacarapl bone
+filename: str
+    Name of the image
+bone_id: int
+    Bone identifier number
+OUTPUT: str
+    Output directory
+\end{DoxyVerb}
+ 
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classModules_1_1distance_1_1Distancer_a9289b83d58efd06557be484fe8ac0a7e}\label{classModules_1_1distance_1_1Distancer_a9289b83d58efd06557be484fe8ac0a7e}} 
+\index{Modules.distance.Distancer@{Modules.distance.Distancer}!bottomMiddleX@{bottomMiddleX}}
+\index{bottomMiddleX@{bottomMiddleX}!Modules.distance.Distancer@{Modules.distance.Distancer}}
+\doxyparagraph{\texorpdfstring{bottomMiddleX()}{bottomMiddleX()}}
+{\footnotesize\ttfamily def Modules.\+distance.\+Distancer.\+bottom\+MiddleX (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{int,  }\item[{}]{bottomright\+\_\+y\+\_\+C,  }\item[{}]{int,  }\item[{}]{bottomright\+\_\+x\+\_\+C,  }\item[{}]{int,  }\item[{}]{topleft\+\_\+x\+\_\+C,  }\item[{}]{int,  }\item[{}]{offset\+\_\+C }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Finds bottom middle x coordinate using mean average approach.
+
+Parameters
+----------
+bottomright_y_C: float
+    Bottom right y coordinate for bounding box approximation
+bottomright_x_C: float
+    Bottom right x coordinate for bounding box approximation
+topleft_x_C: float
+    Top left x coordinate for bounding box approximation
+offset_C: float
+    Number of iterations for the best bottom mid x coordinate approximation
+
+Returns
+-------
+int
+    average bottom middle x coordinate
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classModules_1_1distance_1_1Distancer_ac25485ed54b6f8da38502a239b96a24b}\label{classModules_1_1distance_1_1Distancer_ac25485ed54b6f8da38502a239b96a24b}} 
+\index{Modules.distance.Distancer@{Modules.distance.Distancer}!divideBone@{divideBone}}
+\index{divideBone@{divideBone}!Modules.distance.Distancer@{Modules.distance.Distancer}}
+\doxyparagraph{\texorpdfstring{divideBone()}{divideBone()}}
+{\footnotesize\ttfamily def Modules.\+distance.\+Distancer.\+divide\+Bone (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{int,  }\item[{}]{topleft\+\_\+x\+\_\+C,  }\item[{}]{int,  }\item[{}]{topleft\+\_\+y\+\_\+C,  }\item[{}]{int,  }\item[{}]{bottomright\+\_\+x\+\_\+C,  }\item[{}]{int,  }\item[{}]{bottomright\+\_\+y\+\_\+C,  }\item[{}]{int,  }\item[{}]{offset\+\_\+C }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Computes center line using cross product to enable divison the bone into
+two similar halfs. This is not an easy task due to irregularity
+of the bone shape which is irregular polygon.
+
+Parameters
+----------
+topleft_x_C: float
+    Top left x coordinate for bounding box approximation
+topleft_y_C: float
+    Top left y coordinate for bounding box approximation
+bottomright_x_C: float
+    Bottom right x coordinate for bounding box approximation
+bottomright_y_C: float
+    Bottom right y coordinate for bounding box approximation
+offset_C: int
+    Number of pixels which can be ommited
+
+Returns
+-------
+list, list
+    two lists of pixels for left and right side of the bone
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classModules_1_1distance_1_1Distancer_ac98db19a4d86cf5af87810b7e7c07941}\label{classModules_1_1distance_1_1Distancer_ac98db19a4d86cf5af87810b7e7c07941}} 
+\index{Modules.distance.Distancer@{Modules.distance.Distancer}!findMinLength@{findMinLength}}
+\index{findMinLength@{findMinLength}!Modules.distance.Distancer@{Modules.distance.Distancer}}
+\doxyparagraph{\texorpdfstring{findMinLength()}{findMinLength()}}
+{\footnotesize\ttfamily def Modules.\+distance.\+Distancer.\+find\+Min\+Length (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{left\+\_\+side,  }\item[{}]{right\+\_\+side,  }\item[{}]{int,  }\item[{}]{top\+\_\+y\+\_\+C = {\ttfamily 0},  }\item[{}]{int,  }\item[{}]{bottom\+\_\+y\+\_\+C = {\ttfamily 0},  }\item[{}]{roi = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Finds the minimal length by measuring each pixel of left side of the
+divided bone with the each pixel of right side using Pythagoras sentence.
+
+Parameters
+----------
+left_side: list
+    List of left side coordinates based on center line division
+right_side: list
+    List of right side coordinates based on center line division
+top_y_C: float
+    Boundary point for ROI
+bottom_y_C: float
+    Boundary point for ROI
+roi: list
+    Indicates if the roi should be computed (three separate regions)
+
+Returns
+-------
+list, float
+    set of pixels as list and minimal distance as float
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classModules_1_1distance_1_1Distancer_a0f6adb94a680ba5c0f51d378a40d8275}\label{classModules_1_1distance_1_1Distancer_a0f6adb94a680ba5c0f51d378a40d8275}} 
+\index{Modules.distance.Distancer@{Modules.distance.Distancer}!measureMeta@{measureMeta}}
+\index{measureMeta@{measureMeta}!Modules.distance.Distancer@{Modules.distance.Distancer}}
+\doxyparagraph{\texorpdfstring{measureMeta()}{measureMeta()}}
+{\footnotesize\ttfamily def Modules.\+distance.\+Distancer.\+measure\+Meta (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Counts the circumference of third metacarpal bone using various methods
+and saves the distance to '.tps' file.
+
+Returns
+-------
+float, list
+    minimal distance as float and list of coordinates for minimal distance
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classModules_1_1distance_1_1Distancer_ad49b3416f0949ced0c3412e9f59b75c9}\label{classModules_1_1distance_1_1Distancer_ad49b3416f0949ced0c3412e9f59b75c9}} 
+\index{Modules.distance.Distancer@{Modules.distance.Distancer}!measurePythagoras@{measurePythagoras}}
+\index{measurePythagoras@{measurePythagoras}!Modules.distance.Distancer@{Modules.distance.Distancer}}
+\doxyparagraph{\texorpdfstring{measurePythagoras()}{measurePythagoras()}}
+{\footnotesize\ttfamily def Modules.\+distance.\+Distancer.\+measure\+Pythagoras (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{int,  }\item[{}]{x1,  }\item[{}]{int,  }\item[{}]{y1,  }\item[{}]{int,  }\item[{}]{x2,  }\item[{}]{int,  }\item[{}]{y2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Counts distance between two points using Pythagoras sentence.
+
+Parameters
+----------
+x1: float
+    X coordinate of first point
+y1: float
+    Y coordinate of first point
+x2: float
+    X coordinate of second point
+y2: float
+    Y coordinate of second point
+
+Returns
+-------
+float
+    distance in pixels
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classModules_1_1distance_1_1Distancer_a164147e75b88277577e364adaa771655}\label{classModules_1_1distance_1_1Distancer_a164147e75b88277577e364adaa771655}} 
+\index{Modules.distance.Distancer@{Modules.distance.Distancer}!measureROI@{measureROI}}
+\index{measureROI@{measureROI}!Modules.distance.Distancer@{Modules.distance.Distancer}}
+\doxyparagraph{\texorpdfstring{measureROI()}{measureROI()}}
+{\footnotesize\ttfamily def Modules.\+distance.\+Distancer.\+measure\+ROI (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{top\+\_\+y,  }\item[{}]{bottom\+\_\+y }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Counts the circumference of three separate regions of third metacarpal bone.
+
+Parameters
+----------
+top_y: float
+    Boundary point for ROI
+bottom_y: float
+    Boundary point for ROI
+
+Returns
+-------
+float, list
+    minimal distance as float and list of coordinates for minimal distance
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classModules_1_1distance_1_1Distancer_ad813a679b281c476878d4919b0eedc77}\label{classModules_1_1distance_1_1Distancer_ad813a679b281c476878d4919b0eedc77}} 
+\index{Modules.distance.Distancer@{Modules.distance.Distancer}!pixelsToMm@{pixelsToMm}}
+\index{pixelsToMm@{pixelsToMm}!Modules.distance.Distancer@{Modules.distance.Distancer}}
+\doxyparagraph{\texorpdfstring{pixelsToMm()}{pixelsToMm()}}
+{\footnotesize\ttfamily def Modules.\+distance.\+Distancer.\+pixels\+To\+Mm (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{pixels\+\_\+len }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts pixels distance to real distance in milimeters using
+DPI(dots per inch).
+Formula: distance[mm] = pixels_len * 25,4[mm] / DPI.
+
+Parameters
+----------
+pixels_len: float
+    Length of measured bone in pixels
+
+Returns
+-------
+float
+    distance in millimeters
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classModules_1_1distance_1_1Distancer_aeba4f14edb8375d1c50455264668dfc9}\label{classModules_1_1distance_1_1Distancer_aeba4f14edb8375d1c50455264668dfc9}} 
+\index{Modules.distance.Distancer@{Modules.distance.Distancer}!topMiddleX@{topMiddleX}}
+\index{topMiddleX@{topMiddleX}!Modules.distance.Distancer@{Modules.distance.Distancer}}
+\doxyparagraph{\texorpdfstring{topMiddleX()}{topMiddleX()}}
+{\footnotesize\ttfamily def Modules.\+distance.\+Distancer.\+top\+MiddleX (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{int,  }\item[{}]{topleft\+\_\+y\+\_\+C,  }\item[{}]{int,  }\item[{}]{bottomright\+\_\+x\+\_\+C,  }\item[{}]{int,  }\item[{}]{topleft\+\_\+x\+\_\+C,  }\item[{}]{int,  }\item[{}]{offset\+\_\+C }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Finds top middle x coordinate using mean average approach.
+
+Parameters
+----------
+topleft_y_C: float
+    Top left y coordinate for bounding box approximation
+bottomright_x_C: float
+    Bottom right x coordinate for bounding box approximation
+topleft_x_C: float
+    Top left x coordinate for bounding box approximation
+offset_C: int
+    Number of iterations for the best top mid x coordinate approximation
+
+Returns
+-------
+int
+    average top middle x coordinate
+\end{DoxyVerb}
+ 
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classModules_1_1distance_1_1Distancer_a5d38abd4d63cbfc368f0d41d6a422003}\label{classModules_1_1distance_1_1Distancer_a5d38abd4d63cbfc368f0d41d6a422003}} 
+\index{Modules.distance.Distancer@{Modules.distance.Distancer}!bone\_id@{bone\_id}}
+\index{bone\_id@{bone\_id}!Modules.distance.Distancer@{Modules.distance.Distancer}}
+\doxyparagraph{\texorpdfstring{bone\_id}{bone\_id}}
+{\footnotesize\ttfamily Modules.\+distance.\+Distancer.\+bone\+\_\+id}
+
+\mbox{\Hypertarget{classModules_1_1distance_1_1Distancer_ad3534eaea810b199d14fa07bdf73bf52}\label{classModules_1_1distance_1_1Distancer_ad3534eaea810b199d14fa07bdf73bf52}} 
+\index{Modules.distance.Distancer@{Modules.distance.Distancer}!box@{box}}
+\index{box@{box}!Modules.distance.Distancer@{Modules.distance.Distancer}}
+\doxyparagraph{\texorpdfstring{box}{box}}
+{\footnotesize\ttfamily Modules.\+distance.\+Distancer.\+box}
+
+\mbox{\Hypertarget{classModules_1_1distance_1_1Distancer_a4f58d98978d9becbf0b1b935c4679657}\label{classModules_1_1distance_1_1Distancer_a4f58d98978d9becbf0b1b935c4679657}} 
+\index{Modules.distance.Distancer@{Modules.distance.Distancer}!filename@{filename}}
+\index{filename@{filename}!Modules.distance.Distancer@{Modules.distance.Distancer}}
+\doxyparagraph{\texorpdfstring{filename}{filename}}
+{\footnotesize\ttfamily Modules.\+distance.\+Distancer.\+filename}
+
+\mbox{\Hypertarget{classModules_1_1distance_1_1Distancer_a31894553943d5858134f0b245eb5a06e}\label{classModules_1_1distance_1_1Distancer_a31894553943d5858134f0b245eb5a06e}} 
+\index{Modules.distance.Distancer@{Modules.distance.Distancer}!img@{img}}
+\index{img@{img}!Modules.distance.Distancer@{Modules.distance.Distancer}}
+\doxyparagraph{\texorpdfstring{img}{img}}
+{\footnotesize\ttfamily Modules.\+distance.\+Distancer.\+img}
+
+\mbox{\Hypertarget{classModules_1_1distance_1_1Distancer_a772e6196f71a033688983679268ea167}\label{classModules_1_1distance_1_1Distancer_a772e6196f71a033688983679268ea167}} 
+\index{Modules.distance.Distancer@{Modules.distance.Distancer}!OUTPUT@{OUTPUT}}
+\index{OUTPUT@{OUTPUT}!Modules.distance.Distancer@{Modules.distance.Distancer}}
+\doxyparagraph{\texorpdfstring{OUTPUT}{OUTPUT}}
+{\footnotesize\ttfamily Modules.\+distance.\+Distancer.\+OUTPUT}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+distance.\+py\end{DoxyCompactItemize}

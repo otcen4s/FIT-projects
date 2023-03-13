@@ -1,0 +1,157 @@
+\hypertarget{classModules_1_1train_1_1Trainer}{}\doxysubsection{Modules.\+train.\+Trainer Class Reference}
+\label{classModules_1_1train_1_1Trainer}\index{Modules.train.Trainer@{Modules.train.Trainer}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classModules_1_1train_1_1Trainer_ac39933430bfe0c6754dc7b790a60eb9f}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classModules_1_1train_1_1Trainer_a1d741308beec1273d721f6a6ce23cdb0}{COCO\+\_\+\+NAME}}, \mbox{\hyperlink{classModules_1_1train_1_1Trainer_a0a0b4bb301512fa0d656bd46604aea15}{COCO\+\_\+\+ANNOTS}}, \mbox{\hyperlink{classModules_1_1train_1_1Trainer_abdbe306e5ed1623ed5593d688e1a2fd4}{MODEL\+\_\+\+TYPE}}, \mbox{\hyperlink{classModules_1_1train_1_1Trainer_a806c4a654a6dd56cb63c68425c81dd5e}{WEIGHT\+\_\+\+PATH}}, \mbox{\hyperlink{classModules_1_1train_1_1Trainer_a9759f8ad6a12d5a1f8ce272b6f23cbb3}{MAX\+\_\+\+ITER\+\_\+\+META}}, \mbox{\hyperlink{classModules_1_1train_1_1Trainer_a95f62191cce069f8992c8e26d3fb2e2d}{NUM\+\_\+\+WORKERS}}, \mbox{\hyperlink{classModules_1_1train_1_1Trainer_a66b940f1b25396c816b75ab52163bdb3}{IMS\+\_\+\+PER\+\_\+\+BATCH}}, \mbox{\hyperlink{classModules_1_1train_1_1Trainer_a13534c6f941214a08ad9b54c01f7d18c}{BASE\+\_\+\+LR}}, \mbox{\hyperlink{classModules_1_1train_1_1Trainer_a9c7f95e826e536db24940dce41a3dd00}{BATCH\+\_\+\+SIZE\+\_\+\+PER\+\_\+\+IMAGE}}, \mbox{\hyperlink{classModules_1_1train_1_1Trainer_a042481772b46f1aea4a268f544d257a3}{NUM\+\_\+\+CLASSES}})
+\item 
+def \mbox{\hyperlink{classModules_1_1train_1_1Trainer_abbb1ae66259798a1d12ef3dea97adab5}{run}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classModules_1_1train_1_1Trainer_a13534c6f941214a08ad9b54c01f7d18c}{BASE\+\_\+\+LR}}
+\item 
+\mbox{\hyperlink{classModules_1_1train_1_1Trainer_a9c7f95e826e536db24940dce41a3dd00}{BATCH\+\_\+\+SIZE\+\_\+\+PER\+\_\+\+IMAGE}}
+\item 
+\mbox{\hyperlink{classModules_1_1train_1_1Trainer_a0a0b4bb301512fa0d656bd46604aea15}{COCO\+\_\+\+ANNOTS}}
+\item 
+\mbox{\hyperlink{classModules_1_1train_1_1Trainer_a1d741308beec1273d721f6a6ce23cdb0}{COCO\+\_\+\+NAME}}
+\item 
+\mbox{\hyperlink{classModules_1_1train_1_1Trainer_a66b940f1b25396c816b75ab52163bdb3}{IMS\+\_\+\+PER\+\_\+\+BATCH}}
+\item 
+\mbox{\hyperlink{classModules_1_1train_1_1Trainer_a9759f8ad6a12d5a1f8ce272b6f23cbb3}{MAX\+\_\+\+ITER\+\_\+\+META}}
+\item 
+\mbox{\hyperlink{classModules_1_1train_1_1Trainer_abdbe306e5ed1623ed5593d688e1a2fd4}{MODEL\+\_\+\+TYPE}}
+\item 
+\mbox{\hyperlink{classModules_1_1train_1_1Trainer_a042481772b46f1aea4a268f544d257a3}{NUM\+\_\+\+CLASSES}}
+\item 
+\mbox{\hyperlink{classModules_1_1train_1_1Trainer_a95f62191cce069f8992c8e26d3fb2e2d}{NUM\+\_\+\+WORKERS}}
+\item 
+\mbox{\hyperlink{classModules_1_1train_1_1Trainer_a806c4a654a6dd56cb63c68425c81dd5e}{WEIGHT\+\_\+\+PATH}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+\begin{DoxyVerb}Description
+-------
+Trainer class including method for training the model.
+
+Methods
+-------
+run()
+    Starts the training process
+\end{DoxyVerb}
+ 
+
+\doxysubsubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classModules_1_1train_1_1Trainer_ac39933430bfe0c6754dc7b790a60eb9f}\label{classModules_1_1train_1_1Trainer_ac39933430bfe0c6754dc7b790a60eb9f}} 
+\index{Modules.train.Trainer@{Modules.train.Trainer}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!Modules.train.Trainer@{Modules.train.Trainer}}
+\doxyparagraph{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Modules.\+train.\+Trainer.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{COCO\+\_\+\+NAME,  }\item[{}]{COCO\+\_\+\+ANNOTS,  }\item[{}]{MODEL\+\_\+\+TYPE,  }\item[{}]{WEIGHT\+\_\+\+PATH,  }\item[{}]{MAX\+\_\+\+ITER\+\_\+\+META,  }\item[{}]{NUM\+\_\+\+WORKERS,  }\item[{}]{IMS\+\_\+\+PER\+\_\+\+BATCH,  }\item[{}]{BASE\+\_\+\+LR,  }\item[{}]{BATCH\+\_\+\+SIZE\+\_\+\+PER\+\_\+\+IMAGE,  }\item[{}]{NUM\+\_\+\+CLASSES }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Parameters
+----------
+COCO_NAME: str
+    Image annotations exported to '.json' file in COCO format (https://roboflow.com/formats/coco-json)
+COCO_ANNOTS: str
+    Name of the annotated images folder
+MODEL_TYPE: str
+    Loading model zoo configuration, using  ResNet and FPN(Feature Pyramid Networks) backbone
+WEIGHT_PATH: str
+    Loading pre-trained weights based on model zoo
+    (https://github.com/facebookresearch/detectron2/blob/master/MODEL_ZOO.md) for instance segmentation
+MAX_ITER_META: int
+    Number of iterations
+NUM_WORKERS: int
+    Number of parallel data loading workers
+IMS_PER_BATCH: int
+    Number of images per batch across all machines (depends on number of GPUs), each GPU will see 2 images per batch
+BASE_LR: float
+    Hyperparameter that controls how much to change the model in response to the
+    estimated error each time the model weights are updated (it has big impact for resulting model)
+BATCH_SIZE_PER_IMAGE: int
+    Number of samples(images) that will be propagated through the network
+NUM_CLASSES: int
+    Number of thing classes for R-CNN
+\end{DoxyVerb}
+ 
+
+\doxysubsubsection{Member Function Documentation}
+\mbox{\Hypertarget{classModules_1_1train_1_1Trainer_abbb1ae66259798a1d12ef3dea97adab5}\label{classModules_1_1train_1_1Trainer_abbb1ae66259798a1d12ef3dea97adab5}} 
+\index{Modules.train.Trainer@{Modules.train.Trainer}!run@{run}}
+\index{run@{run}!Modules.train.Trainer@{Modules.train.Trainer}}
+\doxyparagraph{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily def Modules.\+train.\+Trainer.\+run (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Method for starting the trainig process including configuration for Detectron2
+\end{DoxyVerb}
+ 
+
+\doxysubsubsection{Member Data Documentation}
+\mbox{\Hypertarget{classModules_1_1train_1_1Trainer_a13534c6f941214a08ad9b54c01f7d18c}\label{classModules_1_1train_1_1Trainer_a13534c6f941214a08ad9b54c01f7d18c}} 
+\index{Modules.train.Trainer@{Modules.train.Trainer}!BASE\_LR@{BASE\_LR}}
+\index{BASE\_LR@{BASE\_LR}!Modules.train.Trainer@{Modules.train.Trainer}}
+\doxyparagraph{\texorpdfstring{BASE\_LR}{BASE\_LR}}
+{\footnotesize\ttfamily Modules.\+train.\+Trainer.\+BASE\+\_\+\+LR}
+
+\mbox{\Hypertarget{classModules_1_1train_1_1Trainer_a9c7f95e826e536db24940dce41a3dd00}\label{classModules_1_1train_1_1Trainer_a9c7f95e826e536db24940dce41a3dd00}} 
+\index{Modules.train.Trainer@{Modules.train.Trainer}!BATCH\_SIZE\_PER\_IMAGE@{BATCH\_SIZE\_PER\_IMAGE}}
+\index{BATCH\_SIZE\_PER\_IMAGE@{BATCH\_SIZE\_PER\_IMAGE}!Modules.train.Trainer@{Modules.train.Trainer}}
+\doxyparagraph{\texorpdfstring{BATCH\_SIZE\_PER\_IMAGE}{BATCH\_SIZE\_PER\_IMAGE}}
+{\footnotesize\ttfamily Modules.\+train.\+Trainer.\+BATCH\+\_\+\+SIZE\+\_\+\+PER\+\_\+\+IMAGE}
+
+\mbox{\Hypertarget{classModules_1_1train_1_1Trainer_a0a0b4bb301512fa0d656bd46604aea15}\label{classModules_1_1train_1_1Trainer_a0a0b4bb301512fa0d656bd46604aea15}} 
+\index{Modules.train.Trainer@{Modules.train.Trainer}!COCO\_ANNOTS@{COCO\_ANNOTS}}
+\index{COCO\_ANNOTS@{COCO\_ANNOTS}!Modules.train.Trainer@{Modules.train.Trainer}}
+\doxyparagraph{\texorpdfstring{COCO\_ANNOTS}{COCO\_ANNOTS}}
+{\footnotesize\ttfamily Modules.\+train.\+Trainer.\+COCO\+\_\+\+ANNOTS}
+
+\mbox{\Hypertarget{classModules_1_1train_1_1Trainer_a1d741308beec1273d721f6a6ce23cdb0}\label{classModules_1_1train_1_1Trainer_a1d741308beec1273d721f6a6ce23cdb0}} 
+\index{Modules.train.Trainer@{Modules.train.Trainer}!COCO\_NAME@{COCO\_NAME}}
+\index{COCO\_NAME@{COCO\_NAME}!Modules.train.Trainer@{Modules.train.Trainer}}
+\doxyparagraph{\texorpdfstring{COCO\_NAME}{COCO\_NAME}}
+{\footnotesize\ttfamily Modules.\+train.\+Trainer.\+COCO\+\_\+\+NAME}
+
+\mbox{\Hypertarget{classModules_1_1train_1_1Trainer_a66b940f1b25396c816b75ab52163bdb3}\label{classModules_1_1train_1_1Trainer_a66b940f1b25396c816b75ab52163bdb3}} 
+\index{Modules.train.Trainer@{Modules.train.Trainer}!IMS\_PER\_BATCH@{IMS\_PER\_BATCH}}
+\index{IMS\_PER\_BATCH@{IMS\_PER\_BATCH}!Modules.train.Trainer@{Modules.train.Trainer}}
+\doxyparagraph{\texorpdfstring{IMS\_PER\_BATCH}{IMS\_PER\_BATCH}}
+{\footnotesize\ttfamily Modules.\+train.\+Trainer.\+IMS\+\_\+\+PER\+\_\+\+BATCH}
+
+\mbox{\Hypertarget{classModules_1_1train_1_1Trainer_a9759f8ad6a12d5a1f8ce272b6f23cbb3}\label{classModules_1_1train_1_1Trainer_a9759f8ad6a12d5a1f8ce272b6f23cbb3}} 
+\index{Modules.train.Trainer@{Modules.train.Trainer}!MAX\_ITER\_META@{MAX\_ITER\_META}}
+\index{MAX\_ITER\_META@{MAX\_ITER\_META}!Modules.train.Trainer@{Modules.train.Trainer}}
+\doxyparagraph{\texorpdfstring{MAX\_ITER\_META}{MAX\_ITER\_META}}
+{\footnotesize\ttfamily Modules.\+train.\+Trainer.\+MAX\+\_\+\+ITER\+\_\+\+META}
+
+\mbox{\Hypertarget{classModules_1_1train_1_1Trainer_abdbe306e5ed1623ed5593d688e1a2fd4}\label{classModules_1_1train_1_1Trainer_abdbe306e5ed1623ed5593d688e1a2fd4}} 
+\index{Modules.train.Trainer@{Modules.train.Trainer}!MODEL\_TYPE@{MODEL\_TYPE}}
+\index{MODEL\_TYPE@{MODEL\_TYPE}!Modules.train.Trainer@{Modules.train.Trainer}}
+\doxyparagraph{\texorpdfstring{MODEL\_TYPE}{MODEL\_TYPE}}
+{\footnotesize\ttfamily Modules.\+train.\+Trainer.\+MODEL\+\_\+\+TYPE}
+
+\mbox{\Hypertarget{classModules_1_1train_1_1Trainer_a042481772b46f1aea4a268f544d257a3}\label{classModules_1_1train_1_1Trainer_a042481772b46f1aea4a268f544d257a3}} 
+\index{Modules.train.Trainer@{Modules.train.Trainer}!NUM\_CLASSES@{NUM\_CLASSES}}
+\index{NUM\_CLASSES@{NUM\_CLASSES}!Modules.train.Trainer@{Modules.train.Trainer}}
+\doxyparagraph{\texorpdfstring{NUM\_CLASSES}{NUM\_CLASSES}}
+{\footnotesize\ttfamily Modules.\+train.\+Trainer.\+NUM\+\_\+\+CLASSES}
+
+\mbox{\Hypertarget{classModules_1_1train_1_1Trainer_a95f62191cce069f8992c8e26d3fb2e2d}\label{classModules_1_1train_1_1Trainer_a95f62191cce069f8992c8e26d3fb2e2d}} 
+\index{Modules.train.Trainer@{Modules.train.Trainer}!NUM\_WORKERS@{NUM\_WORKERS}}
+\index{NUM\_WORKERS@{NUM\_WORKERS}!Modules.train.Trainer@{Modules.train.Trainer}}
+\doxyparagraph{\texorpdfstring{NUM\_WORKERS}{NUM\_WORKERS}}
+{\footnotesize\ttfamily Modules.\+train.\+Trainer.\+NUM\+\_\+\+WORKERS}
+
+\mbox{\Hypertarget{classModules_1_1train_1_1Trainer_a806c4a654a6dd56cb63c68425c81dd5e}\label{classModules_1_1train_1_1Trainer_a806c4a654a6dd56cb63c68425c81dd5e}} 
+\index{Modules.train.Trainer@{Modules.train.Trainer}!WEIGHT\_PATH@{WEIGHT\_PATH}}
+\index{WEIGHT\_PATH@{WEIGHT\_PATH}!Modules.train.Trainer@{Modules.train.Trainer}}
+\doxyparagraph{\texorpdfstring{WEIGHT\_PATH}{WEIGHT\_PATH}}
+{\footnotesize\ttfamily Modules.\+train.\+Trainer.\+WEIGHT\+\_\+\+PATH}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+train.\+py\end{DoxyCompactItemize}

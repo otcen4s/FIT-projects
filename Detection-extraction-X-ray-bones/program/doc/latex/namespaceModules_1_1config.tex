@@ -1,0 +1,115 @@
+\hypertarget{namespaceModules_1_1config}{}\doxysubsection{Modules.\+config Namespace Reference}
+\label{namespaceModules_1_1config}\index{Modules.config@{Modules.config}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespaceModules_1_1config_a6f79b4f2817ec518247abfe52dd7b97e}{Test\+Meta}} ()
+\item 
+def \mbox{\hyperlink{namespaceModules_1_1config_aac95ddb3ce7ac2600e3325543d588637}{Test\+ROI}} ()
+\item 
+def \mbox{\hyperlink{namespaceModules_1_1config_a0683c54ebe4ca38a2d9a66166d330715}{Train\+Meta}} ()
+\item 
+def \mbox{\hyperlink{namespaceModules_1_1config_a38040e1387dc3fdf623fd852065d1d5c}{Train\+ROI}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespaceModules_1_1config_a58a3b32f63b9966156550a36abdf8c48}{MODEL\+\_\+\+USE1}} = 1
+\item 
+int \mbox{\hyperlink{namespaceModules_1_1config_a5ce51893711c38e37158be3a1f142c7e}{MODEL\+\_\+\+USE2}} = 1
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+\begin{DoxyVerb}config.py: Configuration module for training and inference. Values are specific
+for use of Detectron2 library.
+https://detectron2.readthedocs.io/en/latest/tutorials/getting_started.html
+https://github.com/facebookresearch/detectron2
+
+NOTE:
+    Models were primary trained on Google Colab(https://colab.research.google.com/)
+    due to high quality of GPU utilization.
+\end{DoxyVerb}
+ 
+
+\doxysubsubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceModules_1_1config_a6f79b4f2817ec518247abfe52dd7b97e}\label{namespaceModules_1_1config_a6f79b4f2817ec518247abfe52dd7b97e}} 
+\index{Modules.config@{Modules.config}!TestMeta@{TestMeta}}
+\index{TestMeta@{TestMeta}!Modules.config@{Modules.config}}
+\doxyparagraph{\texorpdfstring{TestMeta()}{TestMeta()}}
+{\footnotesize\ttfamily def Modules.\+config.\+Test\+Meta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Function for inference on given dataset of hands based on the trained model. Coming from
+'TrainMeta()' function.
+
+Returns
+-------
+str, str, str, str, int, int, float
+    set of multiple parameters for model prediction
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespaceModules_1_1config_aac95ddb3ce7ac2600e3325543d588637}\label{namespaceModules_1_1config_aac95ddb3ce7ac2600e3325543d588637}} 
+\index{Modules.config@{Modules.config}!TestROI@{TestROI}}
+\index{TestROI@{TestROI}!Modules.config@{Modules.config}}
+\doxyparagraph{\texorpdfstring{TestROI()}{TestROI()}}
+{\footnotesize\ttfamily def Modules.\+config.\+Test\+ROI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Function for inference on given dataset of ROI of third metacarpal bone
+based on the trained model. Coming from
+'TrainROI()' function.
+
+Returns
+-------
+str, str, str, str, int, int, float
+    set of multiple parameters for model prediction
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespaceModules_1_1config_a0683c54ebe4ca38a2d9a66166d330715}\label{namespaceModules_1_1config_a0683c54ebe4ca38a2d9a66166d330715}} 
+\index{Modules.config@{Modules.config}!TrainMeta@{TrainMeta}}
+\index{TrainMeta@{TrainMeta}!Modules.config@{Modules.config}}
+\doxyparagraph{\texorpdfstring{TrainMeta()}{TrainMeta()}}
+{\footnotesize\ttfamily def Modules.\+config.\+Train\+Meta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Function for training custom model based on given image annotations using pretrained
+deep neural network (DNN) called Mask RCNN for instance segmentation. Models
+utilize COCO(common objects in context) large-scale detection dataset.
+Training is provided on full x-ray image of human hand, where the third metacarpal is
+the only important.
+
+
+
+Returns
+-------
+str, str, str, str, int, int, int, float, int, int
+    set of multiple parameters for model configuration
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespaceModules_1_1config_a38040e1387dc3fdf623fd852065d1d5c}\label{namespaceModules_1_1config_a38040e1387dc3fdf623fd852065d1d5c}} 
+\index{Modules.config@{Modules.config}!TrainROI@{TrainROI}}
+\index{TrainROI@{TrainROI}!Modules.config@{Modules.config}}
+\doxyparagraph{\texorpdfstring{TrainROI()}{TrainROI()}}
+{\footnotesize\ttfamily def Modules.\+config.\+Train\+ROI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Function for training custom model based on given image annotations using pretrained
+deep neural network (DNN) called Mask RCNN for instance segmentation. Models
+utilize COCO(common objects in context) large-scale detection dataset.
+Training is provided on region of interest (ROI) of detected bones where
+the bone width is shortest.
+
+Returns
+-------
+str, str, str, str, int, int, int, float, int, int
+    set of multiple paremeters for model configuration
+\end{DoxyVerb}
+ 
+
+\doxysubsubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceModules_1_1config_a58a3b32f63b9966156550a36abdf8c48}\label{namespaceModules_1_1config_a58a3b32f63b9966156550a36abdf8c48}} 
+\index{Modules.config@{Modules.config}!MODEL\_USE1@{MODEL\_USE1}}
+\index{MODEL\_USE1@{MODEL\_USE1}!Modules.config@{Modules.config}}
+\doxyparagraph{\texorpdfstring{MODEL\_USE1}{MODEL\_USE1}}
+{\footnotesize\ttfamily int Modules.\+config.\+MODEL\+\_\+\+USE1 = 1}
+
+\mbox{\Hypertarget{namespaceModules_1_1config_a5ce51893711c38e37158be3a1f142c7e}\label{namespaceModules_1_1config_a5ce51893711c38e37158be3a1f142c7e}} 
+\index{Modules.config@{Modules.config}!MODEL\_USE2@{MODEL\_USE2}}
+\index{MODEL\_USE2@{MODEL\_USE2}!Modules.config@{Modules.config}}
+\doxyparagraph{\texorpdfstring{MODEL\_USE2}{MODEL\_USE2}}
+{\footnotesize\ttfamily int Modules.\+config.\+MODEL\+\_\+\+USE2 = 1}
+
